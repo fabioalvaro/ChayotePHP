@@ -1,0 +1,25 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+        <h1>Relatório de Rota Status</h1>
+      
+        <form name="frm_relatorio_pre" action="/rota_status/relatorio001_rota_status" method="POST" enctype="multipart/form-data">
+            Busca: <input type="text" name="edtbusca" id="edtbusca" /><br><br>
+            <br><input type="submit" value="Gerar Relatório" name="btnGerar" />
+        </form>
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/jquery_ui/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/rota_status/relatorio001_pre_rota_status.js"></script>
+{include file="comuns/footer.tpl"}
+
+

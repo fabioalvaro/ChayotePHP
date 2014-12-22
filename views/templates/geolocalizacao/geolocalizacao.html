@@ -1,0 +1,159 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!-- Sidebar -->
+        {include file="comuns/sidebar.tpl"}        
+        <!--Altere daqui pra baixo-->
+        
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Gerenciar</h3>
+                    </div>
+                    <p>
+                    <form class="form-inline" role="form">
+                        <div class="form-group  form-inline">
+                            <label>Projeto</label>
+                            <select class="form-control" name="id_projetos" id="id_projetos" onclick="id_projetosOnchange()">                                                  
+                                {html_options options=$lista_projetos}
+                            </select>
+                        </div>
+                        <div class="form-group   form-inline">
+                            <label>Cidade</label>
+                            <select class="form-control" name="id_municipio" id="id_municipio">
+                                <option value="" selected="selected">Todas</option>                                                       
+                            </select>
+                        </div>   
+                        <div class="form-group   form-inline">
+                            <label>Situação das Trocas</label>
+                            <select class="form-control" name="id_troca_situacao" id="id_troca_situacao">
+                                <option value="" selected="selected">Todas</option>
+                                <option value="3">Sucessos</option>
+                                <option value="1">Não Iniciadas</option>
+                                <option value="2">Em Rota</option>
+                                <option value="4">Insucessos</option>
+                            </select>                    
+                        </div>
+                        <div class="form-group   form-inline">
+                            <label>Status Geolocalização</label>
+                            <select class="form-control" name="geo" id="geo">                            
+                                <option value="0" selected="selected">Novos</option>
+                                <option value="2">Geo com Erro</option>
+                                <option value="1">Geo com Sucesso</option>                            
+                            </select>                    
+                        </div>                    
+                    </form>
+                    </p>
+                    <p>
+
+
+
+                    <div id="infobusca">Info...</div>
+                    <div id="divmsg"></div> 
+                    </p>
+
+
+                    <p>
+                        <input type="button" class="btn btn-danger" value="Buscar Trocas" name="btnTrocas" onclick="buscarTrocas()" />
+                        <a href="/geolocalizacao/mapacheio_admin" class="btn btn-success">Mapa Completo Administração</a>
+                        <a class="btn btn-success" id="btnmulti">Atualizar Lat/Long Multiplos</a>
+                    </p>                    
+                </div>
+
+            </div>
+            <!-- //Dock das mensagens -->
+            <div id="mensagem-dock"></div>
+        </div>
+
+
+        <div class="row">
+<!--            <div class="col-lg-3">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Info Geografica</h3>
+                    </div>
+                    <div class="form-group form-inline">
+                        <label>id_uc</label>
+                        <input class="form-control" id="id_uc" name="id_uc" value="4973">
+                    </div>   
+                    <div class="form-group form-inline">
+                        <label>id_geoerro</label>
+                        <input class="form-control" id="id_geoerro" name="id_geoerro" value="5">
+                    </div>                  
+                    <div class="form-group">
+                        <label>lat</label>
+                        <input class="form-control" id="lat" name="lat" value="123">
+                    </div>     
+                    <div class="form-group">
+                        <label>long</label>
+                        <input class="form-control" id="long" name="long" value="321">
+                    </div>                 
+                    <div class="form-group">
+                        <label>Endereco</label>
+                        <input class="form-control" id="endereco-teste" name="endereco-teste" value="Rua Altair Aparecido Coelho,321 - Jardim São domingos - Campinas">
+                                            <input type="button" class="btn btn-success" value="Busca LatLong" name="btnBuscaLatLong" onclick="btnBuscaLatLongOnclick()" />
+                                            <input type="button" class="btn btn-success" value="Grava LatLong no Banco" name="btnGravaLatLong" onclick="btnGravaLatLongOnclick()" />
+                                            <input type="button" class="btn btn-danger" value="Seta Erro" name="btnSetaErro" onclick="btnSetaErroOnclick()" />
+                                            <input type="button" class="btn btn-success" value="cria Marcador" name="btnTeste2" onclick="criaMarcadorNoMapa()" />
+                    </div>
+                </div>
+            </div>-->
+            <div class="col-lg-6" >
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Lista</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="lista_trocas"><p>Lista</p></div>
+                                                 
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">    
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="progressbar1" class="progress progress-striped active hidden">
+                            <div class="progress-bar"  role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%">
+                                <span class="sr-only">85% Complete</span>
+                            </div>
+                        </div>                 
+                    </div>
+                </div>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Geolocalização</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div id="mapa" style="width:100%;height:300px;"></div>
+                    </div>
+                </div> 
+            </div>
+
+        </div><!-- /.row -->
+
+
+
+
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>    
+<script src="/files/js/bootstrap.js"></script>
+<!-- Toast Message -->
+<script src="/files/js/toastmessage/javascript/jquery.toastmessage.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/markerclusterer.js"></script>
+<script src="/files/js/geolocalizacao/geolocalizacao.js"></script>
+<!-- Blank JS -->
+<!--<script src="/files/js/blank/blank.js"></script> -->
+{include file="comuns/footer.tpl"}

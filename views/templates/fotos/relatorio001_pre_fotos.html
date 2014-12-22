@@ -1,0 +1,28 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+        <h1>Relatorio de Fotos</h1>
+      
+        <form name="frm_relatorio_pre" action="/fotos/relatorio001_fotos" method="POST" enctype="multipart/form-data">
+            
+            <b>Busca:</b> <input type="text" class="form-control" name="edtbusca" id="edtbusca" />
+            <br><input class="btn btn-primary" type="submit" value="Gerar Relatorio" name="btnGerar" />                          
+            <a href="/fotos" class="btn btn-primary"> Cadastro de Fotos</a>
+            
+        </form>
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/jquery_ui/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/fotos/relatorio001_pre_fotos.js"></script>
+{include file="comuns/footer.tpl"}
+
+

@@ -1,0 +1,43 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div>
+            <h1>Relatório de Documento</h1>
+            
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Filename</th>
+                        <th>Caminho</th>
+                        <th>Tipo Documento</th>
+                        <th>Código da Troca</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$documento_lista item="linha"}
+                    <tr>
+                        <td>{$linha.id_documento}</td>
+                        <td>{$linha.descricao}</td>
+                        <td>{$linha.caminho}</td>
+                        <td>{$linha.Tipo}</td>
+                        <td>{$linha.id_troca}</td>
+                       
+                    </tr>
+                    {foreachelse}
+                    <tr><td colspan="6">Nenhum Registro Encontrado</td></tr>
+                    {/foreach}        
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

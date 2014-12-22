@@ -1,0 +1,95 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->        
+        <div class="alert alert-info" >
+            <tt><h1>Lista de Reclama&ccedil;&otilde;es</h1></tt>
+        </div>          
+        <div class="panel panel-default">            
+            <div class="panel-footer">
+                <form name="frm-busca-reclamacao" action="/reclamacao/busca_reclamacao" method="POST" enctype="multipart/form-data">                    
+                    <div class="input-group col-lg-8">
+                        <div class="input-group col-lg-4">
+                            <span class="input-group-addon btn-outline btn-primary">Status</span>                         
+                            <select class="form-control col-lg-4" name="status" id="status">
+                                <option>Todos</option>
+                                <option>Abertos</option>
+                                <option>Aguardando Cliente</option>
+                                <option>Aguardando Fox</option>
+                                <option>Concluído</option>
+                            </select>
+<!--                            <span class="input-group-addon btn-outline btn-primary"><button class="btn btn-primary" type="submit">Buscar</button></span>                         -->
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Buscar</button><br><br>
+                            </span>          
+                        </div><!-- /input-group -->
+                    </div>                
+                </form>
+            </div>
+        </div>        
+
+        <a href="/reclamacao/novo_reclamacao" class="btn btn-primary">Nova Reclamação</a>     
+
+        <br><br>
+        {if $reclamacao_lista != null}
+        <table class="table table-hover" border="1">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Usuário</th>
+                    <th>Data Criação</th>
+                    <th>Data Update</th>
+                    <th>Data Fechamento</th>
+                    <th>Data Limite</th>
+                    <th>Status</th>
+                    <th>UC</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Descrição</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$reclamacao_lista item="linha"}
+                <tr>
+                    <td><a href="/reclamacao/carrega_detalhe/id_reclamacao/{$linha.id_reclamacao}">{$linha.id_reclamacao}</a></td>
+                    <td>{$linha.usuario}</td>
+                    <td>{$linha.data_criacao}</td>
+                    <td>{$linha.data_update}</td>
+                    <td>{$linha.data_fechamento}</td>
+                    <td>{$linha.data_limite}</td>
+                    <td>{$linha.statusDesc}</td>                    
+                    <td>{$linha.uc}</td>
+                    <td>{$linha.nome}</td>
+                    <td>{$linha.telefone}</td>
+                    <td>{$linha.descricao}</td>
+                    <td>{if $smarty.session.user.id_usuario == 1 or $smarty.session.user.id_usuario == 3} 
+                        <a href="/reclamacao/novo_reclamacao/id_reclamacao/{$linha.id_reclamacao}">Editar</a> |
+                        <a  href="/reclamacao/delreclamacao/id_reclamacao/{$linha.id_reclamacao}">Excluir</a>|  
+                        {/if}
+                        {if $linha.status != 2}
+                        <a  href="/reclamacao/carrega_detalhe/id_reclamacao/{$linha.id_reclamacao}">Detalhes</a> 
+                        {/if}
+                        
+                    </td>
+                </tr>
+                {foreachelse}
+                    <tr><td colspan="6">Nenhum Registro Encontrado</td></tr>
+                {/foreach}        
+            </tbody>
+        </table>
+        {else}
+            <tr><td colspan="6">Nenhum Registro Encontrado</td></tr>
+        {/if}
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/reclamacao/reclamacao_lista.js"></script>
+{include file="comuns/footer.tpl"}

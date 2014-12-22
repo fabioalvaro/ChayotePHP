@@ -1,0 +1,179 @@
+<html>
+    <head>
+        <title>Testa API Android</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div> 
+            <form name="frm-teste" action="/android/setDados" method="POST"  enctype="multipart/form-data">
+                <h1>18)Set Fotos Motivo</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>                      
+                Tabela:<input type="text" name="tabela" value="FOTOS_MOTIVO" /><br>                
+                <textarea name="json_envio" rows="4" cols="120">{literal}[{"id_troca":4623,"id_fotos_tipo":3,"descricao":"Nao quero mais pois comprei uma de duas portas"},{"id_troca":4624,"id_fotos_tipo":3,"descricao":"Nao quero mais pois comprei uma de duas portas"},{"id_troca":4625,"id_fotos_tipo":3,"descricao":"Nao quero mais pois comprei uma de duas portas"}]{/literal}</textarea>
+                <br><input type="submit" value="Enviar Trocas" name="btn_enviar" />
+            </form>  
+            
+            <form name="frm-teste" action="/android/reabreTrocas" method="POST"  enctype="multipart/form-data">
+                <h1>18)Reabrir Trocas</h1>                
+                Auth:<input type="text" name="auth" value="d67d8ab4f4c10bf22aa353e27879133c" /><br>                      
+                ID_ROTA:<input type="text" name="id_rota" value="38" /><br>                                
+                <br><input type="submit" value="Enviar Trocas" name="btn_enviar" />
+            </form>   
+            
+            <form name="frm-teste" action="/android/setDados" method="POST"  enctype="multipart/form-data">
+                <h1>17)Set Diagnosticos Selecionados</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>                      
+                Tabela:<input type="text" name="tabela" value="DIAG_SEL" /><br>                
+                <textarea name="json_envio" rows="4" cols="120">{literal}[{"id_troca":4623,"id_diagnostico_trocas":3},{"id_troca":4624,"id_diagnostico_trocas":3},{"id_troca":4625,"id_diagnostico_trocas":3}]{/literal}</textarea>
+                <br><input type="submit" value="Enviar Trocas" name="btn_enviar" />
+            </form>   
+            
+            
+            <form name="frm-teste" action="/android/setDados" method="POST"  enctype="multipart/form-data">
+                <h1>16)Set trocas Varias</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>                      
+                Tabela:<input type="text" name="tabela" value="TROCA" /><br>                
+                <textarea name="json_envio" rows="4" cols="120">{literal}[{"id_troca":4623,"id_troca_situacao":3,"lat":0,"long":0},{"id_troca":4624,"id_troca_situacao":3,"lat":null,"long":null},{"id_troca":4625,"id_troca_situacao":3,"lat":0,"long":0}]{/literal}</textarea>
+                <br><input type="submit" value="Enviar Trocas" name="btn_enviar" />
+            </form>   
+            
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>15)Get TENTATIVAS</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>                      
+                Tabela:<input type="text" name="tabela" value="TENTATIVAS" /><br>
+                Where:<input type="text" name="where" value="R.id_motorista=4" /><br>
+                <input type="submit" value="Buscar Diagnostico" name="btn_enviar" />
+            </form>               
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>14)Get DIAGNOSTICO OPCOES</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>                      
+                Tabela:<input type="text" name="tabela" value="DIAGNOSTICO_OPCOES" /><br>
+                Where:<input type="text" name="where" value="DP.id_projeto=1" /><br>
+                <input type="submit" value="Buscar Diagnostico" name="btn_enviar" />
+            </form>                  
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>13)Get DIAGNOSTICO</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>                      
+                Tabela:<input type="text" name="tabela" value="DIAGNOSTICO" /><br>
+                Where:<input type="text" name="where" value="a.id_projeto=1" /><br>
+                <input type="submit" value="Buscar Diagnostico" name="btn_enviar" />
+            </form>                
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>12)Get Fotos Necessarias</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>                      
+                Tabela:<input type="text" name="tabela" value="FOTOS" /><br>
+                Where:<input type="text" name="where" value="FT.id_projetos=1" /><br>
+                <input type="submit" value="BUSCAR" name="btn_enviar" />
+            </form>              
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>11)Get Termos de Recusa por projeto (Atencao no SSSSSS )</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>                      
+                Tabela:<input type="text" name="tabela" value="TERMO_RECUSA" /><br>
+                Where:<input type="text" name="where" value="id_projetos=1" /><br>
+                <input type="submit" value="Buscar Tabela Itens da Rota" name="btn_enviar" />
+            </form>                    
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>10)Get Termos de Aceite por projeto</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>   
+                Tabela:<input type="text" name="tabela" value="TERMO_ACEITE" /><br>                
+                Where:<input type="text" name="where" value="id_projeto=1" /><br>
+                <input type="submit" value="Buscar Tabela Itens da Rota" name="btn_enviar" />
+            </form>              
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>9)Pega TROCAS e outras Tabelas no banco usando where</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>
+                Tabela:<input type="text" name="tabela" value="TROCA" /><br>                
+                Where:<input type="text" name="where" value="R.id_motorista=4" /><br>                                
+                <input type="submit" value="Buscar Tabela Itens da Rota" name="btn_enviar" />
+            </form>              
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>8)Pega Rota_Item e outras Tabelas no banco usando where</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>
+                Tabela:<input type="text" name="tabela" value="ROTA_ITEM" /><br>                
+                Where:<input type="text" name="where" value="R.id_motorista=4" /><br>                                
+                <input type="submit" value="Buscar Tabela Itens da Rota" name="btn_enviar" />
+            </form>            
+            <form name="frm-teste" action="/android/getTabelaWhere" method="POST"  enctype="multipart/form-data">
+                <h1>7)Pega Rotas e outras Tabelas no banco usando where</h1>                
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>
+                Tabela:<input type="text" name="tabela" value="ROTA" /><br>                
+                Where:<input type="text" name="where" value="R.id_motorista=4" /><br>                                
+                <input type="submit" value="Buscar Tabela" name="btn_enviar" />
+            </form>
+
+            <form name="frm-teste" action="/android/mudaStatus" method="POST"  enctype="multipart/form-data">
+                <h1>6)Muda Status da Troca</h1>
+                <p>muda varios campos em apenas um comando no final do processo de troca</p>
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>
+                id_troca:<input type="text" name="id_troca" value="4618" /><br>                
+                Lat:<input type="text" name="lat" value="-23.0413372" /><br>
+                Long:<input type="text" name="long" value="-47.1061686" /><br>
+                rg:<input type="text" name="rg" value="283809425" /><br>
+                cpf:<input type="text" name="cpf" value="26721993880" /><br>
+                id_troca_situacao:<input type="text" name="id_troca_situacao" value="3" />3-sucesso/4-insucesso<br>  
+                <input type="submit" value="Muda Status" name="btn_enviar" />
+            </form>                
+
+            <form name="frm-teste" action="/android/setFoto" method="POST"  enctype="multipart/form-data">
+                <h1>5)Set Foto</h1>
+                Auth:<input type="text" name="auth" value="d67d8ab4f4c10bf22aa353e27879133c" /><br>
+                id_troca:<input type="text" name="id_troca" value="57245" /><br>                
+                Foto:<input type="file" name="foto" value="" /><br>                                 
+                id_fotos_tipo:<input type="text" name="id_fotos_tipo" value="1" /><br>  
+                <input type="submit" value="Set Foto" name="btn_enviar" />
+            </form>    
+            
+            <form name="frm-teste" action="/android/setFoto/auth/d67d8ab4f4c10bf22aa353e27879133c/id_troca/57245/id_fotos_tipo/1" method="POST" enctype="multipart/form-data">
+                <h1>5)Set Foto CABRITO</h1>
+                Foto:<input type="file" name="foto" value="" /><br>   
+                <input type="submit" value="Set Foto" name="btn_enviar" />                
+            </form>
+
+            <form name="frm-teste" action="/android/getValor" method="POST">
+                <h1>4)GET Valor de um Campo</h1>
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>
+                Tabela:<input type="text" name="tabela" value="usuario" /><br>                
+                Campo:<input type="text" name="campo" value="telefone1" /><br>                                 
+                Where:<input type="text" name="where" value="id_usuario=31" /><br>  
+                <input type="submit" value="Get Valor" name="btn_enviar" />
+            </form>   
+
+
+            <form name="frm-teste" action="/android/updValor" method="POST">
+                <h1>3)UPD Valor</h1>
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>
+                Tabela:<input type="text" name="tabela" value="usuario" /><br>                
+                Campo:<input type="text" name="campo" value="telefone1" /><br>                
+                Valor:<input type="text" name="valor" value="123" /><br>        
+                Where:<input type="text" name="where" value="id_usuario=31" /><br>  
+                <input type="submit" value="Update" name="btn_enviar" />
+            </form>            
+
+
+
+
+            <form name="frm-teste" action="/android/loginInicio" method="POST">
+                <h1>2)Login</h1>
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>
+                user:<input type="text" name="user" value="fabio.pereira@industriafox.com" /><br>
+                pass:<input type="text" name="pass" value="teste123" /><br>
+                <input type="submit" value="logar" name="btn_enviar" />
+            </form>
+
+            <form name="frm-teste" action="/android/getTabela" method="POST">
+                <h1>1)getTabela</h1>
+                Auth:<input type="text" name="auth" value="c16a5320fa475530d9583c34fd356ef5" /><br>
+                tabela:<input type="text" name="tabela" value="usuarios" /><br>                
+                <input type="submit" value="Get Tabela" name="btn_enviar" />
+            </form>
+
+            <form name="frm-teste" action="/android/getPerfil" method="POST">
+                <h1>Aula TesteFox</h1>
+                Auth:<input type="text" name="auth" value="Xuxu Mano Xuxu" />
+                <input type="submit" value="Enviar" name="btn_enviar" />
+            </form>            
+
+        </div>
+    </body>
+</html>

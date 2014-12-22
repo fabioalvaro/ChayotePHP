@@ -1,0 +1,50 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+
+        <h1>Acompanhamento de Manufatura Reversa</h1>
+
+
+        <div class="row col-lg-9">
+            <form name="frm_man_rev"
+                  id="frm_man_rev"
+                  method="POST" 
+                  enctype="multipart/form-data" 
+                  action="#">
+                
+                <b>ID Manufatura:</b> <span>{$linha[0].id_manufatura_reversa}</span><br>
+                <b>Data de Criacao:</b> <span>{$linha[0].data_criacao}</span><br>
+                <input type="hidden" name="id_usuario" value="{$smarty.session.user.id_usuario}" />
+                
+                <b>Projeto:</b> <span>{$projetos[0].nome}</span><br>
+                <br>
+                <input type="hidden" name="status" id="status" value="1" />
+                <textarea name="body" id="body" rows="20" cols="20" style="width: 100%;" readonly="readonly">
+                    {$linha[0].body}
+                </textarea>
+
+<!--                <input type="submit" value="Salvar" name="btnsalvar" id="btnsalvar" />-->
+            </form>
+            <a href="/manufatura_reversa/manufatura_reversa_tab" class="btn btn-primary">Voltar</a>
+        </div><!-- /.row -->
+
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<!-- Toast Message -->
+<script src="/files/js/toastmessage/javascript/jquery.toastmessage.js"></script>
+<!-- Utils -->
+<script src="/files/js/util.js"></script>
+<!-- JS Especifico do Controller -->
+<script src="/files/js/projeto/projeto_novo.js"></script>
+
+{include file="comuns/footer.tpl"}
+

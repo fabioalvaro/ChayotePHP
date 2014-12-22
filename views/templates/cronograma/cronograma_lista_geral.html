@@ -1,0 +1,72 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+
+        <h1>Lista de Cronogramas</h1>
+        <div class="panel panel-default">            
+            <div class="panel-footer">
+                <form name="frm-busca-cronograma" action="/cronograma/busca_cronograma" method="POST" enctype="multipart/form-data">
+                        Descrição
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="buscacronograma" name="buscacronograma" value="{$buscacronograma|default:''}" >
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Buscar</button><br><br>
+                            </span>          
+                        </div>
+                </form>
+            </div>
+        </div>        
+
+        {if $smarty.session.user.tipo_usuario == 1 || $smarty.session.user.tipo_usuario == 3}
+        <a href="/cronograma/novo_cronograma" class="btn btn-primary glyphicon glyphicon-open" > Upload</a>
+        {/if}
+        <br><br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Cod.</th>
+                    <th>Projeto</th>
+                    <th>Descrição</th>
+                    <th>Status</th>
+                    <th>Data</th>
+                    {if $smarty.session.user.tipo_usuario == 1 || $smarty.session.user.tipo_usuario == 3}
+                    <th>Ação</th>
+                    {/if}
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$cronograma_lista item="linha"}
+                <tr>
+                    <td>{$linha.id_cronograma}</td>
+                    <td>{$linha.nomeProjeto}</td>
+                    <td>{$linha.cdesc}</td>
+                    <td>{$linha.descStatCrono}</td>
+                    <td>{$linha.data_upload}</td>
+                    {if $smarty.session.user.tipo_usuario == 1 || $smarty.session.user.tipo_usuario == 3}
+                    <td><a  href="#" onclick="confirma_excluir_item({$linha.id_cronograma})">Excluir</a> </td>
+                    {/if}
+                    <td><a href="../{$linha.caminho_arquivo}" class="glyphicon glyphicon-save"> {$linha.nome_arquivo}</a></td>
+                    
+                </tr>
+                {foreachelse}
+                <tr><td colspan="6">Nenhum Registro Encontrado</td></tr>
+                {/foreach}        
+            </tbody>
+        </table>
+        
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/cronograma/cronograma_lista.js"></script>
+<script src="/files/js/cronograma/cronograma_novo.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+{include file="comuns/footer.tpl"}

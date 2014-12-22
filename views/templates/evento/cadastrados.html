@@ -1,0 +1,80 @@
+{include file="comuns/head.tpl"}
+
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}
+
+    <div id="page-wrapper">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Cadastrados em {$regs.0.nome_municipio}, {$regs.0.nome_evento|lower}</h1>
+                <hr>
+            </div>
+        </div><!-- /.row -->
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Código UC</th>
+                            <th>Nome</th>
+                            <th>Sorteio</th>
+                            <th>Entrega</th>
+                            <th>Telefone</th>
+                            <!--th>CPF</th-->
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    {foreach from=$regs item=uc}
+                    <tbody>
+                        <tr>
+                            <td>{$uc.codigo_uc}</td>
+                            <td>{$uc.nome}</td>
+                            <td>{$uc.dt_sorteio|date_format:'%d/%m/%Y'}</td>
+                            <td>{$uc.dt_entrega|date_format:'%d/%m/%Y'}</td>
+                            <td>{$uc.telefone|mascara:['10'=>'(##) ####-####','11'=>'(##) #####-####']}</td>
+                            <!--td>{$uc.cpf|mascara:['11'=>'###.###.###-##']}</td-->
+                            <td class="text-center">
+                                <a class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" href="/evento/detalhes/id/{$uc.id_unidade_consumidora}" role="button">
+                                    <span class="glyphicon glyphicon-info-sign"></span> Detalhes</a> 
+                                <a href="/evento/download/tipo/uc/id/{$uc.id_unidade_consumidora}" class="btn btn-danger" rel='tooltip' data-toggle="tooltip" data-placement="bottom" title="Fazer download deste sorteado" role="button">
+                                    <span class="glyphicon glyphicon-download-alt"></span> Download</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    {/foreach}
+                </table>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        {$paginacao|default:''}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                </div>
+            </div>
+        </div>
+
+
+    </div><!-- /#page-wrapper -->
+</div><!-- /#wrapper -->
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+
+<!-- Page Specific Plugins -->
+<script type="text/javascript" src="/files/js/bootbox.min.js"></script>
+<script type="text/javascript" src="/files/js/evento/upload.js"></script>
+
+{include file="comuns/footer.tpl"}

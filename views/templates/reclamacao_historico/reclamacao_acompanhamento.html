@@ -1,0 +1,59 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        
+        <!--Altere daqui pra baixo-->
+        <h1>Acompanhamento</h1>
+        
+        <h2>Ticket # - UC {$reclamacao[0].uc}</h2>
+
+        <a href="/reclamacao" class="btn btn-primary"> Voltar</a><br>
+        
+        <form name="frm-reclamacao_historico" 
+              action="/reclamacao/gravar_reclamacao_historico" 
+              method="POST" 
+              enctype="multipart/form-data">
+            
+            
+            Código:{$registro[0].id_reclamacao_historico}
+            
+           
+                     
+            
+            <input type="hidden" name="id_reclamacao_historico" id="id_reclamacao_historico" value="{$registro.id_reclamacao_historico}" />
+            <br>
+            <b>Reclamação:</b> {$registro[0].id_reclamacao}   
+            
+            <br>
+            <input type="text" name="id_tipo" id="id_tipo" value="{$registro[0].id_tipo}" hidden="hidden"/>
+            <br>
+            <input type="text" name="id_usuario" id="id_usuario" value="{$registro[0].id_usuario}" hidden="hidden"/>            
+            <br>
+            <br>
+            Acompanhamento:<br> 
+                <textarea readonly="readonly" name="mensagem" id="mensagem" rows="4" cols="15" style="width: 100%;" value="{$registro[0].mensagem}">{$registro[0].mensagem}</textarea>
+            <br>
+            
+            <input type="submit" class="btn btn-primary" value="Cadastrar" name="btnGravar"/>   
+            
+        </form>
+
+        <!--Altere daqui pra cima-->
+        
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<!-- Toast Message -->
+<script src="/files/js/toastmessage/javascript/jquery.toastmessage.js"></script>
+<!-- Utils -->
+<script src="/files/js/util.js"></script>
+<!-- JS Especifico do Controller -->
+<script src="/files/js/reclamacao_historico/reclamacao_historico_novo.js"></script>
+
+{include file="comuns/footer.tpl"}
+

@@ -1,0 +1,68 @@
+{include file="comuns/head.tpl"}
+<div style="margin-left: 15px;margin-right: 15px;margin-top: -15px">
+
+    <h2>Acompanhamento de Sucesso</h2>
+    Usuário: {$usuario} | Data do Relatório: {$data} | Agrupamento: {$agrupar}
+    <hr>   
+    {$total_mes = 0}
+    {foreach from=$lista item="item"} 
+
+    {if $subtopico < $item.mes}
+    {if $total_mes != 0}   
+    </tbody>
+    </table>
+    <span class="pull-right"><b>{$total_mes}</b></span>
+    {$total_mes = 0}
+    <br>
+    {/if}
+    <h4>Mês {$item.mes}</h4> 
+    <table style="width: 100%">
+        <thead>
+            <tr>
+                <th>Cidade</th>
+                <th style="width: 100%;text-align: center">Motivos</th>
+                <th style="text-align: right">Total</th>
+            </tr>        
+        </thead>
+        <tbody>
+            {/if}
+
+            <tr>
+                <td>{if $item.cidade}{$item.cidade}{else}N/A{/if}</td>
+                <td style="width: 100%;text-align: center">
+                    {if $item.motivos}
+                    {foreach from=$item.motivos item="motivo"}
+                    {$motivo.total}x {$motivo.motivo}&nbsp;            
+                    {/foreach}
+                    {else}
+                    N/A
+                    {/if}
+                </td>
+                <td style="text-align: right">{$item.total}</td>
+            </tr>
+            {$total_mes = $total_mes + $item.total}
+            <!--
+            {if $subtopico >= $item.mes}   
+            </tbody>
+            </table>
+            <br>
+            {/if} 
+            -->
+            {$subtopico = $item.mes}
+
+            {/foreach}
+
+        </tbody>
+    </table>
+    <span class="pull-right"><b>{$total_mes}</b></span>
+    <hr>
+    <div>
+        <span class="pull-right">Total de sucessos: <b>{$total}</b></span>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+
+{include file="comuns/footer.tpl"}

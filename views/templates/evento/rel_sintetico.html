@@ -1,0 +1,72 @@
+{include file="comuns/head.tpl"}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <h1 style="margin-top: 0">Relatório Eventos - Sintético</h1>            
+
+            <div class="row">
+                <div class="col-xs-10">
+                    <p style="text-transform: capitalize;">{$consulta}</p>
+                    <p style="text-transform: capitalize;">Tipo: {$tipo_evento}</p>
+                </div>
+                <div class="col-xs-2 hidden-print">
+                    <a onclick="window.print()"><span class="glyphicon glyphicon-print"></span> Imprimir</a>
+                </div>
+            </div>
+
+            <div class="row" style="margin-top: 30px;">
+                <div class="col-xs-12">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Data</th>
+                                <th>Evento</th>
+                                <th class="text-center">Tipo</th>
+                                <th class="text-center">Cadastrados</th>
+                                <th class="text-center">Sorteados</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {assign var="qtd_total_cadastrado" value=0}
+                            {assign var="qtd_total_sorteado" value=0}
+
+                            {foreach from=$resultado item=reg name=foo}
+
+                            <tr>
+                                <td class="text-center">{$reg.data_evento|date_format:'%d/%m/%Y'}</td>
+                                <td>{$reg.nome_evento}</td>
+                                <td class="text-center">{if $reg.tipo_evento == 0}Geladeira{else}Lamapada{/if}</td>
+                                <td class="text-center">{if $reg.total_cadastrados neq ''}{$reg.total_cadastrados}{else}0{/if}</td>
+                                <td class="text-center">{if $reg.total_sorteados neq ''}{$reg.total_sorteados}{else}0{/if}</td>
+                            </tr>
+
+                            {assign var="qtd_total_cadastrado" value=$qtd_total_cadastrado+$reg.total_cadastrados}
+                            {assign var="qtd_total_sorteado" value=$qtd_total_sorteado+$reg.total_sorteados}
+
+                                {if $smarty.foreach.foo.last}
+
+                                <tr>
+                                    <td></td>
+                                    <td class="text-right"><strong>Total:</strong></td>
+                                    <td class="text-center"><strong>{$qtd_total_cadastrado}</strong></td>
+                                    <td class="text-center"><strong>{$qtd_total_sorteado}</strong></td>
+                                </tr>
+                                {/if}
+
+                            {foreachelse}
+                            <tr>
+                                <td colspan="100%">Nenhum registro encontrado.</td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{include file="comuns/footer.tpl"}

@@ -1,0 +1,70 @@
+<div class="col-lg-2">
+    Projeto:
+    <div class="input-group col-lg-12">
+        <select class="form-control col-lg-12" name="id_projeto" id="id_projeto" onchange="projetoOnChange()" {if $smarty.session.rota.status == 'editando'}disabled{/if}>
+                <option value="0">- SELECIONE -</option>
+            {html_options options=$lista_projetos}
+        </select>                        
+    </div><!-- /input-group -->
+</div>
+<div class="col-lg-3">
+    Cidade:
+    <div class="input-group col-lg-12">
+        <select class="form-control col-lg-12" name="id_cidade" id="id_cidade" onchange="cidadeOnChange()">
+            <option value="0">TODAS</option>
+        </select>                        
+    </div><!-- /input-group -->
+</div>
+<div class="col-lg-3">
+    Bairro:
+    <div class="input-group col-lg-12">
+        <select class="form-control col-lg-12" name="id_bairro" id="id_bairro" onchange="bairroOnChange()">
+            <option value="0">TODOS</option>
+        </select>                        
+    </div><!-- /input-group -->
+</div>
+<div class="col-lg-4">
+    Endereço:
+    <div class="input-group col-lg-12">
+        <select class="form-control col-lg-12" name="endereco" id="endereco">
+            <option value="0">TODOS</option>
+        </select>                        
+    </div><!-- /input-group -->
+</div>
+
+<div class="col-lg-3" style="margin-top: 20px;">
+    <button class="btn btn-primary" type="button" onclick="buscarClick()">
+        <span class="glyphicon glyphicon-search"></span> Buscar
+    </button>             
+</div>
+
+
+<div class="row">    
+    <div class="col-lg-12">
+        <button class="btn btn-primary pull-right" type="button" onclick="adicionaTroca()" >Adicionar Trocas <span id="uc_selecionada" class="badge">0 selecionada(s)</span></button><br><br><br>        
+    </div>
+</div>
+
+<table class="table table-hover col-lg-12" border="1">
+    <thead>
+        <tr>
+            <th><input id="check_all" type="checkbox" title="Selecionar todos"></th>
+            <th>ID</th>
+            <th>UC</th>
+            <th>NOME</th>
+            <th>TEL</th>
+            <th>CIDADE</th>
+            <th>BAIRRO</th>
+            <th>ENDERECO</th>
+            <th>GEO</th>
+            <th>STATUS</th>
+        </tr>
+    </thead>
+    <tbody id="table_trocas_aberto">
+        <tr>
+            <td colspan="10">Primeiro, realize uma busca</td>
+        </tr>       
+    </tbody>
+</table>
+
+<div id="paginacao_ajx"></div>

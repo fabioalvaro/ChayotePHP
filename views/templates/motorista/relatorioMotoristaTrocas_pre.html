@@ -1,0 +1,64 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+        <h1>Relatório de trocas por motorista</h1>
+      
+        <form name="frm_relatorio_pre" action="/motorista/relatorioMotoristaTrocas" method="POST" enctype="multipart/form-data" onsubmit="return formValidator()">            
+            
+            <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label for="data_inicio">Data inicial:</label>
+                                <input type="text" name="data_inicio" class="form-control data datepicker" id="data_inicio" />
+                            </div>
+                        </div>
+
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label for="data_fim">Data final:</label>
+                                <input type="text" name="data_fim" class="form-control data datepicker" id="data_fim" />
+                            </div>
+                        </div>
+            </div>
+            
+             <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="motorista">Motorista:</label>
+                                <select class="form-control" name="motorista" id="motorista">
+                                    {html_options options=$listaMotoristas}
+                                </select>
+                            </div>
+                        </div>
+            </div>
+            <div class="row">
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="situacao">Situação:</label>
+                                <select class="form-control" name="situacao" id="situacao">
+                                    {html_options options=$listaTrocaSituacao}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+            
+            
+            <input type="submit" class="btn btn-primary" value="Gerar Relatório" name="btnGerar" />            
+        </form>   
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/jquery_ui/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script type="text/javascript" src="/files/js/toastmessage/javascript/jquery.toastmessage.js"></script>
+<script type="text/javascript" src="/files/js/util.js"></script>
+<script type="text/javascript" src="/files/js/jquery.mask.js"></script>
+<script type="text/javascript" src="/files/js/motorista/rel_motorista_pre.js"></script>
+{include file="comuns/footer.tpl"}

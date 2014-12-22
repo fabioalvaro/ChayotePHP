@@ -1,0 +1,61 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->   
+
+
+     <div class="row">
+     
+         <h1>Gráfico de Eficiência</h1>
+         
+         {if $dados_grafico}
+    <div class="row">
+        <div class="col-xs-2">
+            <div class="form-group">
+                <a href="/troca/graficoEficienciaGerarCSV/hashcode/{$hashcode}" class="form-control btn btn-primary">Gerar arquivo CSV</a>
+            </div>
+        </div>
+    </div>
+    {/if}
+
+   <script type="text/javascript" src="/files/js/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="/files/js/bootstrap.js"></script>     
+    
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script type="text/javascript" src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+
+    
+     <div class="panel-body">
+                        <div id="morris-chart-area">                                        
+                            <script type = "text/javascript">
+                                                    Morris.Bar({ldelim}
+                                                    element: 'morris-chart-area',
+                                                            data: {$dados_grafico},
+                                                            xkey: 'Data',
+                                                            ykeys: ['Total','Sucesso', 'Insucesso'],
+                                                            labels: ['Total','Sucesso', 'Insucesso'],
+                                                            hideHover: 'auto',
+                                                            resize: true,
+                                                            barColors: ['#90C7FB', '#96EECA', '#EE9696']
+                                                    {rdelim});                                        </script>
+                        </div>
+                    </div>
+     </div>
+    
+    <!-- JavaScript -->
+<script type="text/javascript" src="/files/js/jquery.mask.js"></script>
+<script type="text/javascript" src="/files/js/jquery.price/jquery.price_format.1.3.js"></script>
+<script type="text/javascript" src="/files/js/tablesorter/jquery.tablesorter.js"></script>
+<script type="text/javascript" src="/files/js/tablesorter/tables.js"></script>
+<script type="text/javascript" src="/files/js/jquery_ui/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript" src="/files/js/toastmessage/javascript/jquery.toastmessage.js"></script>
+<script type="text/javascript" src="/files/js/util.js"></script>
+<script type="text/javascript" src="/files/js/dashboard/dashboard.js"></script>
+{include file="comuns/footer.tpl"}
+    
+    
+    
+    
+

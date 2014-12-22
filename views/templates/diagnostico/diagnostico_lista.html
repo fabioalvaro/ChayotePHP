@@ -1,0 +1,65 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->   
+        <h1>Lista de Diagnósticos</h1>
+        Página {$smarty.session.paginacao.atual} de {$smarty.session.paginacao.total_paginas} Paginas. Total de {$smarty.session.paginacao.total_registros} Registros. 
+        <div class="panel panel-default">            
+            <div class="panel-footer">
+                <form name="frm-busca-diagnostico" action="/diagnostico/busca_diagnostico" method="POST" enctype="multipart/form-data">
+                    Descrição:
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="buscadescricao" name="buscadescricao" value="{$buscadescricao|default:''}" >
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button><br><br>
+                        </span>          
+                    </div>
+                </form>
+            </div>
+        </div>        
+        <a href="/diagnostico/novo_diagnostico" class="btn btn-primary">Novo Diagnóstico</a> 
+        <a class="btn btn-primary" href="/diagnostico/relatorio001_pre_diagnostico">Relatório</a>
+        <br><br>
+        <table class="table table-striped" border="1">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Descrição</th>
+                    <th>Código Diagnóstico Tipo</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$diagnostico_lista item="linha"}
+                <tr>
+                    <td><a href="/diagnostico/novo_diagnostico/id_diagnostico/{$linha.id_diagnostico}">{$linha.id_diagnostico}</a></td>
+                    <td>{$linha.descricao}</td> 
+                    <td>{$linha.DescricaoTipo}</td>
+                    <td> 
+                        <a class="glyphicon glyphicon-pencil" href="/diagnostico/novo_diagnostico/id_diagnostico/{$linha.id_diagnostico}">Editar</a> |
+<!--                        <a class="glyphicon glyphicon-trash" href="/diagnostico/delDiagnostico/id_diagnostico/{$linha.id_diagnostico}" >Excluir</a>-->
+                        <a class="glyphicon glyphicon-trash" href="#" onclick="confirma_excluir_item({$linha.id_diagnostico})">Excluir</a>
+                </tr>
+                {foreachelse}
+                <tr><td colspan="6">Nenhum Diagnóstico Encontrado</td></tr>
+                {/foreach}        
+            </tbody>
+        </table>
+        <br>
+        <ul class="pagination">
+            <li>{$smarty.session.paginacao.botoes.primeiro}</li>
+                {$smarty.session.paginacao.botoes.meio} 
+            <li>{$smarty.session.paginacao.botoes.ultimo}</li>
+         </ul>  
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/diagnostico/diagnostico_lista.js"></script>
+{include file="comuns/footer.tpl"}

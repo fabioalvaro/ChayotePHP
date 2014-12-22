@@ -1,0 +1,58 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+      {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+      <h1>Lista de Tentativa Motivo</h1>  
+       <div class="panel panel-default">            
+            <div class="panel-footer">
+                <form name="frm-busca-tentativa_motivo" action="/tentativa_motivo/busca_tentativa_motivo" method="POST" enctype="multipart/form-data">
+                    <b>Descrição:</b>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="buscadescricao" name="buscadescricao" value="{$buscadescricao|default:''}" >
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                            <br>
+                            <br>
+                        </span>          
+                    </div>
+                </form>
+            </div>
+        </div>
+     <a class="btn btn-primary" href="/tentativa_motivo/novo_tentativa_motivo">Nova Tentativa Motivo</a>   <br><br>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Descrição</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach from=$tentativa_motivo_lista item="linha"}
+        <tr>
+            <td><a href="/tentativa_motivo/novo_tentativa_motivo/id_tentativa_motivo/{$linha.id_tentativa_motivo}">{$linha.id_tentativa_motivo}</a></td>
+            <td>{$linha.descricao}</td>
+            <td> <a class="glyphicon glyphicon-pencil" href="/tentativa_motivo/novo_tentativa_motivo/id_tentativa_motivo/{$linha.id_tentativa_motivo}">Editar</a> |
+                 <a class="glyphicon glyphicon-trash" href="#" onclick="confirma_excluir_item({$linha.id_tentativa_motivo})">Excluir</a> </td>
+
+        </tr>
+        {/foreach}        
+    </tbody>
+</table>
+          
+     
+
+<!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/tentativa_motivo/tentativa_motivo_lista.js"></script>
+
+{include file="comuns/footer.tpl"}

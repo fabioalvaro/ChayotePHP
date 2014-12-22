@@ -1,0 +1,54 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+                <h1>Impressão Detalhada de Rotas</h1>
+            </div>
+
+            <div class="panel-body">
+                <form name="frm_relatorio_pre" action="/rota/relatorioDetail" method="POST" enctype="multipart/form-data" onsubmit="return validaFormulario()">
+                    Projeto:
+                    <select name="select_projeto" class="form-control">
+                        {foreach from=$lista_projetos item="projeto"}
+                        <option value="{$projeto.id_projetos}">{$projeto.nome}</option>
+                        {/foreach}
+                    </select>
+                    Rota Inicial:
+                    <input type="text" class="form-control" name="edt_rota_ini" id="edt_rota_ini" />
+                    Rota Final: 
+                    <input type="text" class="form-control" name="edt_rota_fim" id="edt_rota_fim" />
+                    <br>
+                    <input type="submit" class="btn btn-primary col-lg-2" value="Gerar Relatório" name="btnGerar" />
+                </form>
+            </div>
+
+            
+              {if isset($mensagem) && $mensagem neq ''}
+                <div class="alert alert-danger">{$mensagem}</div>
+                {/if}
+            
+            
+            <div class="panel-footer">
+                <a href="/dashboard"> Voltar</a>
+            </div>
+
+        </div>
+
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/util.js" type="text/javascript"></script>
+<script src="/files/js/toastmessage/javascript/jquery.toastmessage.js" type="text/javascript"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/rota/rota_impressao.js"></script>
+{include file="comuns/footer.tpl"}

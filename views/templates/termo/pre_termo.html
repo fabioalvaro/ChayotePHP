@@ -1,0 +1,40 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+        <h1>Termo de insucesso</h1>        
+        <hr>
+        <form name     = "frm_pre_termo" 
+              action   = "/termo/novo_termo"  
+              method   = "POST" 
+              enctype  = "multipart/form-data"
+              id       = "frm_pre_termo">
+
+            Projeto: 
+            <div class="input-group col-lg-3">
+                <select class="form-control col-lg-3" name="projeto" id="projeto" onchange="projetoOnChange()">                        
+                    <option value="0">- SELECIONE -</option>
+                    {html_options options=$lista_projetos}
+                </select>    
+                <br>
+                <br>
+                Unidade Consumidora: 
+                <input type="text" class="form-control" id="uc" name="uc" >
+                <div class="input-group col-lg-3"></div> 
+            </div>
+            <br>
+            <br>
+            <input type="button" class="btn btn-primary" id="gerar" value="Gerar Termo" onclick="enviarDados()" />
+        </form>  
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/toastmessage/javascript/jquery.toastmessage.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/termo/pre_termo.js"></script>
+{include file="comuns/footer.tpl"}

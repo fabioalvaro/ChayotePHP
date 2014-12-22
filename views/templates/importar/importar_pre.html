@@ -1,0 +1,64 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!-- Sidebar -->
+        {include file="comuns/sidebar.tpl"}        
+        <!--Altere daqui pra baixo-->
+
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Importar Base CSV</h1>
+                    {if $smarty.session.user.id_usuario == 1}
+                        Usuario: {$smarty.session.user.id_usuario} - {$smarty.session.user.nome|default:''} |                    
+                        Parceiro: {$smarty.session.user.id_parceiro} - {$smarty.session.user.nome|default:''} | 
+                        Tipo Usuario: {$smarty.session.user.tipo_usuario|default:''}
+                    {else}
+                        Usuario: {$smarty.session.user.id_usuario} - {$smarty.session.user.nome|default:''} |                    
+                        Projeto  {$smarty.session.user.projeto.id_projetos}-{$smarty.session.user.projeto.nome|default:''} |
+                        Parceiro: {$smarty.session.user.id_parceiro} - {$smarty.session.user.nome|default:''} | 
+                        Tipo Usuario: {$smarty.session.user.tipo_usuario|default:''}                    
+                    {/if}
+                    <hr>
+                </div>
+
+
+                <form name="frm_importar_dados" action="/importar/upload" method="POST" enctype="multipart/form-data">                     
+                      Arquivo:<input type="file" id="edtarquivoupload" name="edtarquivoupload"/><br>                    
+                    <br> 
+                    {if $projetos != NULL}
+                        Projeto:
+                        <select class="form-control col-lg-8" name="id_projeto" id="id_projeto" > 
+                            {foreach from=$projetos item="projeto"}
+                                     <option value="{$projeto.id_projetos}">{$projeto.nome}</option>
+                             {/foreach}
+                        </select>
+                        <br><br><br><br>
+                    {/if}
+                    <input type="button" value="Enviar" id="btnEnviar" name="btnEnviar" class="btn btn-primary"  onclick="comprova_extensao_doc(this.form.edtarquivoupload.value)"/>
+                      
+                </form>
+                <br><br><br><br>
+                <div><a href="/files/downloads/enviabase/modelo_enviar_base.csv"><img src="/files/images/download.gif"  width="48"/> Download Modelo De planilha</a> <i class="icon-search icon-white"></i></div>
+            </div><!-- /.row -->
+
+        </div><!-- /#page-wrapper -->
+        <div id="painel2" class="hidden">Arquivo Sendo Enviado !!  <img src='/files/images/loading.gif'></div>
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<!-- Toast Message -->
+<script src="/files/js/toastmessage/javascript/jquery.toastmessage.js"></script>
+<!-- Utils -->
+<script src="/files/js/util.js"></script>
+<script src="/files/js/importar/importar_pre.js"></script>
+<!-- Blank JS -->
+<!--<script src="/files/js/blank/blank.js"></script> -->
+{include file="comuns/footer.tpl"}

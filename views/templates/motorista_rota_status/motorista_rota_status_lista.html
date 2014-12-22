@@ -1,0 +1,56 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <h1>Lista Motorista Rota de Status</h1> 
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Codigo da Rota</th>
+                    <th>Status da Rota do Motorista</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$motorista_rota_status_lista item="linha"}
+                <tr>
+                    <td>{$linha.id_rota}</td>
+                    <td> 
+                        
+                            {if $linha.id_motorista_status eq '1'}  
+                             <img src = "../../../files/images/motorista_rota_status/caminhao_fox_azul-0.png" width = "50" height = "50" alt = "caminhao_fox_azul-0" / >
+                            {/if}
+                            {if $linha.id_motorista_status eq '2'}  
+                            <img src = "../../../files/images/motorista_rota_status/caminhao_fox_preto-0.png" width = "50" height = "50" alt = "caminhao_fox_preto-0" / >
+                            
+                            {/if}
+                            {if $linha.id_motorista_status eq '3'}  
+                             <img src = "../../../files/images/motorista_rota_status/caminhao_fox_verde-0.png" width = "50" height = "50" alt = "caminhao_fox_verde-0" / >
+                            {/if}
+                            {if $linha.id_motorista_status eq '4'}  
+                             <img src = "../../../files/images/motorista_rota_status/caminhao_fox_branco-0.png" width = "50" height = "50" alt = "caminhao_fox_branco-0" / >
+                            {/if}                          
+
+                        
+                    </td>
+
+                </tr>
+                {/foreach}        
+            </tbody>
+        </table>
+
+
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/rota_status/rota_status_lista.js"></script>
+
+{include file="comuns/footer.tpl"}

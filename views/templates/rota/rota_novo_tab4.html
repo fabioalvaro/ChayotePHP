@@ -1,0 +1,16 @@
+
+<div class="input-group col-lg-12">
+    <div class="col-lg-12">
+        Descrição:
+        <input type="text" class="form-control col-lg-12" name="edit_descricao" id="edit_descricao" value="{$descricao|default:''}" onkeyup="descricaoOnKeyUp()">
+    </div>
+    <div class="col-lg-12">
+        Observação:
+        <input type="text" class="form-control col-lg-12" name="edit_obs" id="edit_obs" value="{$obs|default:''}" onkeyup="obsOnKeyUp()">
+    </div>
+    <div class="col-lg-4">
+        Data da Saída:
+        <input type="text" class="form-control" name="data_saida" size="30" id="data_saida" value="{$data_saida|default:''}">
+        <input type="hidden" class="form-control" name="data_corrent" id="data_corrent" value="{$data_saida|default:''}" >                               
+    </div>  
+</div><!-- /input-group -->

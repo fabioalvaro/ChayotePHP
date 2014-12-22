@@ -1,0 +1,62 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+      {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        
+       <h1>Lista de Municipios</h1>  
+       <div class="panel panel-default">            
+            <div class="panel-footer">
+                <form name="frm-busca-diagnosticos_trocas" action="/trocas_diagnostico_opcoes/busca_trocas_diagnostico_opcoes" method="POST" enctype="multipart/form-data">
+                    <b>Codigo Diagnostico Trocas:</b>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="buscaid" name="buscaid" value="{$buscaid|default:''}" >
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                            <br>
+                            <br>
+                        </span>          
+                    </div>
+                </form>
+            </div>
+        </div>   
+       
+       <a class="btn btn-primary" href="/trocas_diagnostico_opcoes/novo_trocas_diagnostico_opcoes">Novo Diagnostico Troca</a><br><br>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Codigo Diagnostico Trocas</th>
+            <th>Codigo Troca</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {foreach from=$trocas_diagnostico_opcoes_lista item="linha"}
+        <tr>
+            <td><a href="/trocas_diagnostico_opcoes/novo_trocas_diagnostico_opcoes/id_diagnostico_trocas/{$linha.id_diagnostico_trocas}">{$linha.id_diagnostico_trocas}</a></td>        
+            <td>{$linha.id_troca}</td>
+            
+            <td> <a class="glyphicon glyphicon-pencil" href="/trocas_diagnostico_opcoes/novo_trocas_diagnostico_opcoes/id_diagnostico_trocas/{$linha.id_diagnostico_trocas}">Editar</a> |
+                 <a class="glyphicon glyphicon-trash" href="#" onclick="confirma_excluir_item({$linha.id_diagnostico_trocas})">Excluir</a> </td> 
+
+        </tr>
+        {/foreach}        
+    </tbody>
+</table>
+          
+
+<!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/trocas_diagnostico_opcoes/trocas_diagnostico_opcoes_lista.js"></script>
+
+
+{include file="comuns/footer.tpl"}

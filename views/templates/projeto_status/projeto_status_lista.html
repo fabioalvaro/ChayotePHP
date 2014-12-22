@@ -1,0 +1,118 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+        <h1>Lista de Status de Projetos</h1> 
+        <!-- //Dock das mensagens -->
+        <div id="mensagem-dock"></div>
+        <!-- //Dock das mensagens -->
+        <div id="box-mensagem-log" class="alert alert-info alert-dismissable hidden">
+            <div class="bs-example">
+                <h3 id="progress-animated">Por favor aguarde enquanto estou excluindo os logs pra você :)</h3>
+                <div class="progress progress-striped active">
+                    <div class="progress-bar" style="width: 100%"></div>
+                </div>
+            </div>   
+        </div>       
+        <div class="panel panel-default">            
+            <div class="panel-footer">
+                <form name="frm-busca-projeto-status" action="/projeto_status/busca_projeto_status" method="POST" enctype="multipart/form-data">
+                    Descrição:
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="buscadescricao" name="buscadescricao" value="{$buscadescricao|default:''}" >
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button><br><br>
+                        </span>                        
+                    </div>
+                    <div class="input-group">
+                        <div id="msg-helper"></div>
+                    </div>                    
+                </form>
+            </div>
+        </div>        
+
+<!--
+        <a href="/log/novo_log" id="btnNovoLog" class="btn btn-primary">Novo Log</a>             
+        <a href="#" id="btnZeraLogs" class="btn btn-danger" onclick="confirma_zeratudo()">Excluir Todos os Logs</a> 
+        <a href="/log/log_navegacao" id="btnNovoLog" class="btn btn-primary">Exemplo de Navegação</a> 
+
+        <br><br>
+        <div class="row">
+            <div class="progress progress-striped">
+                <div id="progressbar1" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                    <span class="sr-only">40% Complete (success)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" id="btn1">Mostra a Tabela</button>
+            <button type="button" class="btn btn-default" id="btn2">Oculta a Tabela</button>
+            <button type="button" class="btn btn-default" id="btn3">Oculta</button>
+            <button type="button" class="btn btn-default" id="btn4">+</button>
+            <button type="button" class="btn btn-default" id="btn5">-</button>
+            <button type="button" class="btn btn-default" id="btn6">Liga Timer</button>
+            <button type="button" class="btn btn-default" id="btn7">Desliga Timer</button>
+            <button type="button" class="btn btn-default" id="btn8">Foco na Mensagem</button>            
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" id="btn9">Ajax Get</button>
+            <button type="button" class="btn btn-default" id="btn10">Ajax Pega Contador</button>
+            <button type="button" class="btn btn-default" id="btn11">Ajax Processamento no Servidor</button>
+            <button type="button" class="btn btn-default" id="btn12">Ajax get EXTERNO</button>
+        </div>
+            </div> 
+        </div>        
+<br><br>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="painel2"></div>
+            </div> 
+        </div>
+-->
+        <a href="/projeto_status/novo_projeto_status" id="btnNovoprojeto_status" class="btn btn-primary">Novo Status do Projeto</a>             
+        <div id="painel_basico">
+            <table class="table" border="1">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Descri&ccedil;&atilde;o</th>
+                        <th>Status</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$projeto_status_lista item="linha"}
+                    <tr>
+                        <td><a href="/projeto_status/novo_projeto_status/id_projeto_status/{$linha.id_projeto_status}">{$linha.id_projeto_status}</a></td>
+                        <td>{$linha.descricao}</td>
+                        <td> {if $linha.status==1 }
+                            ATIVO
+                            {else}
+                            $linha.status
+                            {/if}</td>
+                        <td> <a class="glyphicon glyphicon-pencil" href="/projeto_status/novo_projeto_status/id_projeto_status/{$linha.id_projeto_status}">Editar</a> |
+                            <a class="glyphicon glyphicon-trash" href="#" onclick="confirma_excluir_item({$linha.id_projeto_status})">Excluir</a> </td>
+                    </tr>
+                    {foreachelse}
+                    <tr><td colspan="6">Nenhum registro encontrado</td></tr>
+                    {/foreach}        
+                </tbody>
+            </table>
+        </div>
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+<img src="/files/images/areyousure.gif" width="200px" class="hidden"/>
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/projeto_status/projeto_status_lista.js"></script>
+{include file="comuns/footer.tpl"}

@@ -1,0 +1,55 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+
+        <h1>Cronogramas</h1>
+<!--        <div class="panel panel-default">            
+            <div class="panel-footer">
+                <form name="frm-busca-log" action="/cronograma/busca_cronograma" method="POST" enctype="multipart/form-data">
+                        Cronograma
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="buscamensagem" name="buscacronograma" value="{$buscacronograma|default:''}" >
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit">Buscar</button><br><br>
+                            </span>          
+                        </div>
+                </form>
+            </div>
+        </div>     -->
+
+        <br><br>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Cod.</th>
+                    <th>Cronograma</th>
+                    <th>Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                {foreach from=$cronograma_lista item="linha"}
+                <tr>
+                    <td>{$linha.id_cronograma}</td>
+                    <td>{$linha.cdesc}</td>
+                    <td><a href="../{$linha.caminho_arquivo}" class="glyphicon glyphicon-save"> {$linha.nome_arquivo}</a></td>
+                    
+                </tr>
+                {foreachelse}
+                <tr><td colspan="6">Nenhum Registro Encontrado</td></tr>
+                {/foreach}        
+            </tbody>
+        </table>
+        
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/log/log_lista.js"></script>
+{include file="comuns/footer.tpl"}

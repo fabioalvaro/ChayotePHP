@@ -1,0 +1,30 @@
+{include file="comuns/head.tpl"}
+        <div>
+            <h1>Notas Utilizadas</h1>
+            
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Projeto</th>
+                        <th>Numero da nota</th>             
+                        <th>Total</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$notas_lista item="linha"}
+                    <tr>
+                        <td>{$linha.projeto}</td> 
+                        <td>{$linha.nota_fiscal}</td> 
+                        <td>{$linha.total}</td>                       
+                    </tr>
+                    {foreachelse}
+                    <tr><td colspan="6">Nenhum registro encontrado</td></tr>
+                    {/foreach}        
+                </tbody>
+            </table>
+        </div>
+        <!-- JavaScript -->
+    <script src="/files/js/jquery-1.10.2.js"></script>
+    <script src="/files/js/bootstrap.js"></script>
+    </body>    
+</html>

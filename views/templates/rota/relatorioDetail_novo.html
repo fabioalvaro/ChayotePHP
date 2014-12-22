@@ -1,0 +1,81 @@
+{include file="comuns/head.tpl"}
+<div style="margin-left: 15px;margin-right: 15px;margin-top: -15px">
+    {foreach from=$rota_lista item="rota"}
+    {if $rota.id_rota > 0}
+    <h2>Detalhe da Rota {$rota.id_rota}</h2>
+    <hr>
+    <h4>Informações da Rota</h4>
+    <table border="1" style="width: 100%">
+        <tbody>
+            <tr>
+                <th colspan="1">ROTA</th><td colspan="2"> {$rota.id_rota}</td>
+                <th colspan="1">PROJETO</th><td colspan="2"> {$rota.projeto}</td>
+                <th colspan="1">DESCRICAO</th><td colspan="2"> {$rota.descricao}</td>
+            </tr>
+            <tr>
+                <th colspan="1">MOTORISTA</th><td colspan="2"> {$rota.motorista}</td>
+                <th colspan="1">AJUDANTE 1</th><td colspan="2"> {$rota.ajudante1}</td>
+                <th colspan="1">AJUDANTE 2</th><td colspan="2"> {$rota.ajudante2 }</td>
+            </tr>
+            <tr>
+                <th colspan="1">CRIACAO</th><td colspan="2"> {$rota.data_criacao|date_format:"%d/%m/%Y"}</td>
+                <th colspan="1">SAIDA</th><td colspan="2"> {$rota.data_saida|date_format:"%d/%m/%Y"}</td>
+                <th colspan="1">RETORNO</th><td colspan="2"> {$rota.data_retorno|date_format:"%d/%m/%Y"}</td>
+            </tr>
+            <tr>                        
+                <th colspan="1">STATUS</th><td colspan="2"> {$rota.status}</td>
+                <th colspan="1">USUARIO</th><td colspan="5"> {$rota.usuario}</td>                        
+            </tr>
+            <tr>
+                <th colspan="1">OBS</th><td colspan="8"> {$rota.obs}</td>
+            </tr>       
+        </tbody>
+    </table>
+    <br>
+    <h4>Itens da Rota</h4>
+    <table border="1" style="width: 100%">
+        <thead>
+            <tr>
+                <th>UC</th>
+                <th>NOME</th>
+                <th>CPF</th>        
+                <th>TEL.</th>
+                <th>CIDADE</th>
+                <th>BAIRRO</th>
+                <th>ENDERECO</th>              
+            </tr>
+        </thead>
+        <tbody>
+            {if isset($rota.trocas)}
+            {foreach from=$rota.trocas item=troca}
+            <tr>
+                <td> {$troca.uc}</td>
+                <td> {$troca.nome}</td>
+                <td> {$troca.cpf}</td>
+                <td> {$troca.telefone}</td>
+                <td> {$troca.municipio}</td>
+                <td> {$troca.bairro}</td>
+                <td> {$troca.endereco}, {$troca.numero}</td>
+            </tr>  
+            {/foreach}
+            {else}
+            <tr>
+                <td colspan="7">Nada encontrado </td>
+            </tr>
+            {/if}
+        </tbody>
+    </table>
+    <span class="pull-right">Total de itens: <b>{$rota.total}</b></span>
+    <br><hr><br>
+    <div style="page-break-after: always"></div> 
+    {/if}
+    {foreachelse}
+    <h1>Nada encontrado ... :(</h1>
+    {/foreach}
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+
+{include file="comuns/footer.tpl"}

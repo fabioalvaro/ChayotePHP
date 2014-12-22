@@ -1,0 +1,27 @@
+{include file="comuns/head.tpl"}
+        <div>
+            <h1>Relatorio de Trocas por motoristas</h1>
+            <h2>{$titulo_relatorio}</h2>
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Motorista</th>
+                        <th>Quantidade</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$motorista_lista item="linha"}
+                    <tr>
+                        <td>{$linha.motorista}</td>
+                        <td>{$linha.total}</td>                                 
+                    </tr>
+                    {foreachelse}
+                    <tr><td colspan="6">Nenhum registro encontrado</td></tr>
+                    {/foreach}        
+                </tbody>
+            </table>
+        </div>
+         <script src="/files/js/jquery-1.10.2.js"></script>
+         <script src="/files/js/bootstrap.js"></script>
+    </body>
+</html>

@@ -1,0 +1,212 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+    {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+        <!--Altere daqui pra baixo-->
+       <hr />
+
+        <div class="row">
+            <div class="col-xs-12">
+                <form action="/comprovacoes/buscar" method="GET" id="form-buscar">
+
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <label for="uc">Unidade Consumidora</label>
+                                <input type="text" class="form-control" id="uc" {if $ucSelecionada != ''} value="{$ucSelecionada}" {/if} name="uc" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="id_uf">Estado:</label>
+                                <select class="form-control" name="id_uf" id="id_uf">
+                                    {html_options options=$lista_estado selected=$estadoSelecionado}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="id_municipio">Cidade:</label>
+                                <select class="form-control" name="id_municipio" id="id_municipio">
+                                    {html_options options=$lista_cidade selected=$municipioSelecionado} 
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <div class="form-group">
+                                <label for="id_municipio">Status da troca:</label>
+                                <select class="form-control" name="id_troca_situacao" id="id_troca_situacao">                                
+                                    {html_options options=$trocaSituacaoLista selected=$statusSelecionado}
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        {if $smarty.session.user.tipo_usuario eq 1 || $smarty.session.user.tipo_usuario eq 3}
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="id_veiculos">Sucessos por veiculo:</label>
+                                <select class="form-control" name="id_veiculos" id="id_veiculos">                                
+                                    {html_options options=$lista_veiculos selected=$veiculoSelecionado}
+                                </select>
+                            </div>
+                        </div>
+                        {/if}
+
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="data_inicio">Data início:</label>
+                                <input type="text" name="data_inicio" id="data_inicio" class="form-control data" value="{$iniSelecionado}" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2">
+                            <div class="form-group">
+                                <label for="data_fim">Data fim</label>
+                                <input type="text" name="data_fim" id="data_fim" class="form-control data" value="{$fimSelecionado}" />
+                            </div>
+                        </div>
+
+                        <div class="col-lg-2" style="margin-top: 24px;">
+                            <div class="form-group">
+                                <label for="mostrar_gerar">Comprovacoes Pendentes:
+                                    <input type="checkbox" id="mostrar_gerar" name="mostrar_gerar" value="sim" {if $mostrarGerar =='sim'} checked="checked"  {/if} /></label>
+                            </div>
+                        </div>                        
+
+                        <div class="col-xs-2" style="margin-top: 24px;">
+                            <div class="form-group">
+                                <input type="submit" class="form-control btn btn-primary" id="buscar" value="Buscar" />
+                            </div>
+                        </div>
+
+                        {if isset($busca) && $busca neq ''}
+                        <div class="col-xs-2" style="margin-top: 30px;">
+                            <a href="/comprovacoes">Limpar busca</a>
+                        </div>
+                        {/if}
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div id="painel">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Troca</th>
+                        <th>UC</th>
+                        <th>Nome<th>
+                        <th>Status da troca</th>                        
+                        <th>Data Envio</th>
+                        <th>Data Conclusão</th>
+                        <th>Comprovações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {foreach from=$comprovacoes_lista item="linha"}
+                    <tr>
+                        {if $smarty.session['user']['tipo_usuario'] == 1 || $smarty.session['user']['tipo_usuario'] == 3 }
+                        <td><a href="/troca/nova_troca/id_troca/{$linha.id_troca}">{$linha.id_troca}</a></td>
+                        {else}
+                        <td>{$linha.id_troca}</td>
+                        {/if}
+                        <td><a href="/buscatroca_uc/index_action/uc/{$linha.UC}"> {$linha.UC}</a></td>
+                        <td>{$linha.nomeCliente}<td>
+                        <td>{$linha.descricao}</td>
+                        <td>{$linha.data_envio|date_format:'%d/%m/%Y - %H:%M:%I'}</td>
+                        <td>{$linha.data_conclusao|date_format:'%d/%m/%Y - %H:%M:%I'}</td>
+
+
+                        {if $linha.qtdFoto != 0}
+                        {if $linha.descricao neq "NAO INICIADA" && $linha.descricao neq "EM ROTA"}
+                        {if $linha.arquivo_zip == 1}
+                        <td><a class="glyphicon glyphicon-download-alt" href="{$linha.caminho_arquivo}">Download</a></td>
+                        {else}                           
+                        {if $smarty.session.user.tipo_usuario == 1 or $smarty.session.user.tipo_usuario == 2 or $smarty.session.user.tipo_usuario == 3}
+                        {if $estadoSelecionado != "" && $municipioSelecionado == "" && $statusSelecionado == ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_uf/{$estadoSelecionado}">Gerar</a></td>
+                        {else}
+                        {if $estadoSelecionado == "" && $municipioSelecionado != "" && $statusSelecionado == ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_municipio/{$municipioSelecionado}">Gerar</a></td>
+                        {else}    
+                        {if $estadoSelecionado == "" && $municipioSelecionado == "" && $statusSelecionado != ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_troca_situacao/{$statusSelecionado}">Gerar</a></td>
+                        {else}    
+                        {if $estadoSelecionado == "" && $municipioSelecionado != "" && $statusSelecionado != ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_municipio/{$municipioSelecionado}/id_troca_situacao/{$statusSelecionado}">Gerar</a></td>                                            
+                        {else}                                                
+                        {if $estadoSelecionado != "" && $municipioSelecionado == "" && $statusSelecionado != ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_uf/{$estadoSelecionado}/id_troca_situacao/{$statusSelecionado}">Gerar</a></td>                                            
+                        {else}                                                                                                    
+                        {if $estadoSelecionado != "" && $municipioSelecionado != "" && $statusSelecionado == ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_uf/{$estadoSelecionado}/id_municipio/{$municipioSelecionado}">Gerar</a></td>                                            
+                        {else}
+                        {if $estadoSelecionado != "" && $municipioSelecionado != "" && $statusSelecionado != ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_uf/{$estadoSelecionado}/id_municipio/{$municipioSelecionado}/id_troca_situacao/{$statusSelecionado}">Gerar</a></td>                                            
+                        {else}
+                        {if $estadoSelecionado = "" && $municipioSelecionado != "" && $statusSelecionado != ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_municipio/{$municipioSelecionado}/id_troca_situacao/{$statusSelecionado}">Gerar</a></td>                                            
+                        {else}
+                        {if $estadoSelecionado != "" && $municipioSelecionado == "" && $statusSelecionado != ""}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes/id_troca/{$linha.id_troca}/id_uf/{$estadoSelecionado}/id_troca_situacao/{$statusSelecionado}">Gerar</a></td>                                            
+                        {else}
+                        <td><a class="glyphicon glyphicon-cog" href="/comprovacoes/gera_comprovacoes">Gerar</a></td>                                            
+                        {/if}
+                        {/if}
+                        {/if}
+                        {/if} 
+                        {/if} 
+                        {/if}                                                                                                   
+                        {/if}
+                        {/if}
+                        {/if}    
+                        {/if}
+                        {/if}
+                        {else}
+                        <td></td>
+                        {/if}
+                        {else}
+                        <td></td>
+                        {/if}
+
+                    </tr>
+                    {foreachelse}
+                    <tr><td colspan="6">Nenhum registro encontrado</td></tr>
+                    {/foreach}        
+                </tbody>
+            </table>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    {$paginacao|default:''}
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+<script type="text/javascript" src="/files/js/jquery_ui/js/jquery-ui-1.10.4.custom.min.js"></script>
+<script type="text/javascript" src="/files/js/jquery.mask.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/comprovacoes/comprovacoes.js" type="text/javascript"></script>
+
+{include file="comuns/footer.tpl"}
+

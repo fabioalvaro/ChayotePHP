@@ -1,0 +1,105 @@
+{include file="comuns/head.tpl"}
+<div id="wrapper">
+    <!-- Sidebar -->
+      {include file="comuns/sidebar.tpl"}    
+    <div id="page-wrapper">
+      <h1>Lista de Tipo de Fotos</h1> 
+      <div id="mensagem-dock"></div>
+        <!-- //Dock das mensagens -->
+            <div id="box-mensagem-fotos_tipo" class="alert alert-info alert-dismissable hidden">
+                <div class="bs-example">
+                    <h3 id="progress-animated">Por favor aguarde a exclusão dos registros</h3>
+                    <div class="progress progress-striped active">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                </div>   
+            </div> 
+       <div class="panel panel-default">            
+            <div class="panel-footer">
+                <form name="frm-busca-fotos-tipo" action="/fotos_tipo/busca_fotos_tipo" method="POST" enctype="multipart/form-data">
+                    <b>Descrição:</b>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="buscadescricao" name="buscadescricao" value="{$buscadescricao|default:''}" >
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Buscar</button>
+                            <br>
+                            <br>
+                        </span>          
+                    </div>
+                    <div class="input-group">
+                        <div id="msg-helper"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+         <a class="btn btn-primary" href="/fotos_tipo/novo_fotos_tipo">Novo Tipo de Foto</a><br><br>
+        
+<!--<div class="btn-group">
+  <button type="button" id="btn1" class="btn btn-default">Mostrar Tabela</button>
+  <button type="button" id="btn2" class="btn btn-default">Ocultar Tabela</button>
+  <button type="button" id="btn3" class="btn btn-default">Oculta</button>
+  <button type="button" id="btn4" class="btn btn-default">+</button>
+  <button type="button" id="btn5" class="btn btn-default">-</button>
+  <button type="button" id="btn6" class="btn btn-default">Liga Timer</button>
+  <button type="button" id="btn7" class="btn btn-default">Desliga Timer</button>
+  <button type="button" id="btn8" class="btn btn-default">Mostra Foco</button>
+  <button type="button" id="btn9" class="btn btn-default">Ajax Get</button>  
+  <button type="button" id="btn10" class="btn btn-default">Ajax Contador</button> 
+  <button type="button" id="btn11" class="btn btn-default">Ajax Processamento no Servidor</button>
+</div> <br><br>
+        
+ <div class="progress progress-striped">
+  <div class="progress-bar progress-bar-warning" role="progressbar" id="progressbar1" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+    <span class="sr-only">60% Complete (warning)</span>
+  </div>
+</div>       -->
+
+
+<div class ="row">
+    <div class="col-lg-12">
+        <div id ="painel2"></div>
+    </div>
+ </div>
+
+<div id="painel">        
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Descrição</th>
+            <th>Ação</th>
+        </tr>
+    </thead>
+    <tbody>
+        {foreach from=$fotos_tipo_lista item="linha"}
+        <tr>
+            <td><a href="/fotos_tipo/novo_fotos_tipo/id_fotos_tipo/{$linha.id_fotos_tipo}">{$linha.id_fotos_tipo}</a></td>
+            <td>{$linha.descricao}</td>
+            <td> <a class="glyphicon glyphicon-pencil" href="/fotos_tipo/novo_fotos_tipo/id_fotos_tipo/{$linha.id_fotos_tipo}">Editar</a> |
+                 <a class="glyphicon glyphicon-trash" href="#" onclick="confirma_excluir_item({$linha.id_fotos_tipo})">Excluir</a> </td>
+
+        </tr>
+        {/foreach}        
+    </tbody>
+</table>
+  
+</div>
+
+    
+ 
+<!-- <a href="#" id="btnZeraFotosTipo" class="btn btn-danger" onclick="confirma_zeratudo()">Excluir Todos os Tipos de Foto</a>-->
+
+<!--Altere daqui pra cima-->
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script src="/files/js/jquery-1.10.2.js"></script>
+<script src="/files/js/bootstrap.js"></script>
+<script src="/files/js/bootbox.min.js"></script>
+<script src="/files/js/util.js"></script>
+<script src="/files/js/fotos_tipo/fotos_tipo_lista.js"></script>
+
+{include file="comuns/footer.tpl"}
