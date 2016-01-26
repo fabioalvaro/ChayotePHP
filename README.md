@@ -30,5 +30,8 @@ PHP Framework an easy opportunity to start in the Framework World
         RewriteRule    ^$    public/    [L]
         RewriteRule    (.*) public/$1    [L]
     </IfModule>
-  
-  
+    
+    
+    
+    sudo /etc/rc.d/rc.httpd stop                                                                                                                            
+    sudo /etc/rc.d/rc.httpd start  
