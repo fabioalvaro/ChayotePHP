@@ -32,14 +32,14 @@ PHP Framework an easy opportunity to start in the Framework World
     </IfModule>
     
     
-    5) Reinicie o servidor Apache
+5) Reinicie o servidor Apache
     
     $ sudo /etc/rc.d/rc.httpd stop                                                                                                                            
     $sudo /etc/rc.d/rc.httpd start  
     
     
     
-    6)Faça Checkout do Projeto no git
+6)Faça Checkout do Projeto no git
     
     $ cd var/www/htdocs
     
@@ -48,17 +48,17 @@ PHP Framework an easy opportunity to start in the Framework World
     
     
     
-    6)Dê permissao para a pasta:
+7)Dê permissao para a pasta:
     
     $ sudo chmod 777 teste1/ -R
 
     
-    6)Instale o banco de dados exemplo para voce poder utilizar o banco de dados, use seu gerenciador padrão de MYSQL.
+8)Instale o banco de dados exemplo para voce poder utilizar o banco de dados, use seu gerenciador padrão de MYSQL.
     
         chayotedb.sql
         
         
-    7)Configure as diretivas de conexão no arquivo config.php (linha 27 +- )
+9)Configure as diretivas de conexão no arquivo config.php (linha 27 +- )
     
     define('DBHOST', 'localhost');
     
