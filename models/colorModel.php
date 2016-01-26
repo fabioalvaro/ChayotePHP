@@ -1,29 +1,33 @@
 <?php
+/** 
+ * Data that needs to be copied in news Model Entitys
+ */
+
 
 class colorModel extends model {
+    
+    var $tabPadrao = 'colors';
+    var $campo_chave = 'id';
 
-    var $tabPadrao = 'veiculos';
-    var $campo_chave = 'id_veiculos';
-
-    //Estrutura da Tabela Vazia Utilizada para novos Cadastros
+    // An empty structure to create news Entitys 
     public function estrutura_vazia() {
         $dados = null;
-        $dados[0]['id_veiculos'] = NULL;
-        $dados[0]['descricao'] = NULL;
-        $dados[0]['placa'] = NULL;
-        $dados[0]['tipo'] = NULL;
-        $dados[0]['status'] = NULL;
+        $dados[0]['id'] = NULL;
+        $dados[0]['name'] = NULL;
+        $dados[0]['created'] = NULL;
+        $dados[0]['active'] = NULL;        
         return $dados;
     }
 
-    //Recupera o Log
-    public function getVeiculo($where = null) {
+    
+    /** Retrieve the Entity */
+    public function getColor($where = null) {
         $select = array('*');
         return $this->read($this->tabPadrao, $select, $where, null, null, null, null);
     }
 
-    //Grava o log
-    public function setVeiculo($array) {
+    /** Save a new Entity  */
+    public function setColor($array) {
 
         $this->startTransaction();
 
@@ -36,8 +40,8 @@ class colorModel extends model {
         return $id;
     }
 
-    //Atualiza o Log
-    public function updVeiculo($array) {
+    /** Update the Entity */
+    public function updColor($array) {
         //Chave    
         $where = $this->campo_chave . " = " . $array[$this->campo_chave];
         $this->startTransaction();
@@ -46,11 +50,11 @@ class colorModel extends model {
         return true;
     }
 
-    //Remove o Log
-    public function delVeiculo($array) {
-        //Chave
+     /** Remove the Entity */
+    public function delColor($array) {
+        //Key 
         $where = $this->campo_chave . " = " . $array[$this->campo_chave];
-        $array2['status'] = 0; //Muda status para zero excluido!   
+        $array2['active'] = 0; // Muda status para zero excluido!   
         $this->startTransaction();
         $this->transaction($this->update($this->tabPadrao, $array2, $where));
         $this->commit();
