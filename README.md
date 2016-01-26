@@ -37,6 +37,19 @@ PHP Framework an easy opportunity to start in the Framework World
     sudo /etc/rc.d/rc.httpd stop                                                                                                                            
     sudo /etc/rc.d/rc.httpd start  
     
+    6)Faça Checkout do Projeto no git
+    
+    $ cd var/www/htdocs
+    
+    $ git clone https://github.com/fabioalvaro/ChayotePHP.git teste1
+
+    
+    
+    
+    6)Dê permissao para a pasta:
+    
+    $ sudo chmod 777 teste1/ -R
+
     
     6)Instale o banco de dados exemplo para voce poder utilizar o banco de dados, use seu gerenciador padrão de MYSQL.
     
