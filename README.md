@@ -34,8 +34,10 @@ PHP Framework an easy opportunity to start in the Framework World
     
     5) Reinicie o servidor Apache
     
-    sudo /etc/rc.d/rc.httpd stop                                                                                                                            
-    sudo /etc/rc.d/rc.httpd start  
+    $ sudo /etc/rc.d/rc.httpd stop                                                                                                                            
+    $sudo /etc/rc.d/rc.httpd start  
+    
+    
     
     6)Faça Checkout do Projeto no git
     
