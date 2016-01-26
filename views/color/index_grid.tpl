@@ -9,22 +9,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>john@example.com</td>
-            <td>john@example.com</td>
-           
-        </tr>
-
         {foreach from=$listcolor item="linha"}
             <tr>                                                                
                 <td>{$linha.id}</td>
                 <td>{$linha.name}</td>
                 <td>{$linha.created}</td>
-                <td>{$linha.active}</td>  
-                 <td>View | Edit | Delete</td>
-
+                <td>{if $linha.active eq 1} Enabled{/if}{if $linha.active eq 0} Disabled{/if}</td>  
+                 <td><a href="/color/detalhes/id/{$linha.id}">Details</a> | 
+                     <a href="/color/edit/id/{$linha.id}">Edit</a> | 
+                     <a href="/color/delete/id/{$linha.id}" class="del">Delete</a></td>
             </tr>
         {foreachelse}
             <tr><td colspan="100%">Empty Table</td></tr>

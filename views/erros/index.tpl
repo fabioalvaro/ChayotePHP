@@ -12,6 +12,6 @@
 <p align="center">&nbsp;</p>
 <p align="center">&nbsp;</p>
 <p align="center"><b><font face="Arial" size="3">Chayote PHP | Erro</font></b></p>
-<p align="center"><img src="/files/images/chayote-error.png"></p>
+<p align="center"><img src="/files/images/chayote-error.png" width="150px"></p>
 </body>
 </html>
