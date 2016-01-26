@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Language" content="pt-br">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Chayote PHP | Solicitação com erro</title>
+<title>Chayote PHP | Erro</title>
 </head>
 
 <body>

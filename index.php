@@ -67,7 +67,7 @@ if ($_POST and !get_magic_quotes_gpc()) {
     }
 }
 
-//die("<br>chegou");
+
 $start = new System;
 
 

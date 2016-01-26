@@ -22,7 +22,11 @@
                         <div class="col-lg-12">
                             <h1>Welcome to Chayote PHP</h1>
                             <p>Help us to improve this litle Framework</p>
-                            <p>Make sure to keep all page content within the <code>https://github.com/fabioalvaro/ChayotePHP</code>.</p>                            
+                            <p>Make sure to keep all page content within the <code>https://github.com/fabioalvaro/ChayotePHP</code>.</p>
+                            <br>
+                            <br>
+                            <br>
+                            <p><img src="/files/images/chayote-default.png"></p>                            
                         </div>
                     </div>
                 </div>
