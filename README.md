@@ -32,6 +32,33 @@ PHP Framework an easy opportunity to start in the Framework World
     </IfModule>
     
     
+    5) Reinicie o servidor Apache
     
     sudo /etc/rc.d/rc.httpd stop                                                                                                                            
     sudo /etc/rc.d/rc.httpd start  
+    
+    
+    6)Instale o banco de dados exemplo para voce poder utilizar o banco de dados, use seu gerenciador padrão de MYSQL.
+    
+        chayotedb.sql
+        
+        
+    7)Configure as diretivas de conexão no arquivo config.php (linha 27 +- )
+    
+    define('DBHOST', 'localhost');
+    
+    define('DBPORT', '3306');
+    
+    define('DBUSER', 'root');
+    
+    define('DBPASS', 'senhafake');
+    
+    define('DBNAME', 'chayotedb');
+    
+    define('DBENCODING', 'utf8');
+        
+        
+        
+    
+    
+    
