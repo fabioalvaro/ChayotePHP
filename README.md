@@ -1,5 +1,11 @@
+# README #
+
+
+how to setup the environment
+
+
 ChayotePHP
-==========
+----------------------------
 
 PHP Framework an easy opportunity to start in the Framework World
 
@@ -15,5 +21,13 @@ PHP Framework an easy opportunity to start in the Framework World
       ErrorLog "/var/log/httpd/localhost.chayotephp-error_log"
       CustomLog "/var/log/httpd/localhost.chayotephp-access_log" common    
   </VirtualHost>
+  
+  4)Configure o .htaccess da raiz do projeto
+
+    <IfModule mod_rewrite.c>
+        RewriteEngine on
+        RewriteRule    ^$    public/    [L]
+        RewriteRule    (.*) public/$1    [L]
+    </IfModule>
   
   
