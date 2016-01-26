@@ -2,7 +2,7 @@
 
 //Configuracao do Ambiente
 @define('PATH_ROOT', $_SERVER['DOCUMENT_ROOT'] . '/');
-@define('SMARTYDIR', PATH_ROOT . '/views');
+@define('SMARTYDIR', PATH_ROOT . 'views');
 @define('LIBS', 'system/libs');
 @define('HTTP_ROOT', 'http://' . $_SERVER['HTTP_HOST']);
 @define('MEUDIR', dirname(__FILE__));
@@ -37,15 +37,15 @@ if($_SERVER["HTTP_HOST"]=='homologacao.industriafox.com.br'){
 #@define('SMTPSECURE'  , 'ssl');
 @define('SMTPPORT', '587');
 @define('SMTPUSER', 'sistema@trocainteligentefox.com.br');
-@define('SMTPPASS', 'fox9999');
+@define('SMTPPASS', 'nnnnnnnn');
 @define('SMTPFROM', 'sistema@trocainteligentefox.com.br');
 @define('SMTPFROMNAME', 'sistema@trocainteligentefox.com.br');
 @define('HTML', true);
 
-/*
-  echo 'Document root '. $_SERVER['DOCUMENT_ROOT'].' <br>';
-  echo 'SMARTYDIR '. SMARTYDIR.' <br>';
-  echo 'SMARTYDIR '. LIBS.' <br>';
-  echo 'HTTP_ROOT '. HTTP_ROOT;
- */
+
+//  echo 'Document root '. $_SERVER['DOCUMENT_ROOT'].' <br>';
+//  echo 'SMARTYDIR '. SMARTYDIR.' <br>';
+//  echo 'SMARTYDIR '. LIBS.' <br>';
+//  echo 'HTTP_ROOT '. HTTP_ROOT;
+
 ?>

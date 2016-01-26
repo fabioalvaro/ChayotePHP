@@ -112,7 +112,7 @@ class System {
             require_once(CONTROLLERS . 'erroController.php');
             $_SESSION['erro']['msg']= 'Core: Não existe o controller : [' . $controller_path . ']';
             header('Location: /erro ');
-            //echo '[DIE] System.run=> Nao existe o caminho : [' . $controller_path . ']';
+            echo '[DIE] System.run=> Nao existe o caminho : [' . $controller_path . ']';
             die;
         }
 
@@ -123,7 +123,7 @@ class System {
             require_once(CONTROLLERS . 'erroController.php');
             $_SESSION['erro']['msg']= 'Core: Não existe o método :<b>' . $this->_action . '</b> no Controller <b>' . $app->_controller . '</b>';
             header('Location: /erro ');
-            //echo '[DIE] Core System => Não existe o método :<b>' . $this->_action . '</b> no Controller <b>' . $app->_controller . '</b>';
+            echo '[DIE] Core System => Não existe o método :<b>' . $this->_action . '</b> no Controller <b>' . $app->_controller . '</b>';
             die;
         }
         $action = $this->_action;

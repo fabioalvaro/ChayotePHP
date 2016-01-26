@@ -18,56 +18,8 @@ class template {
 
     public function __construct($objSmarty) {
         $this->smarty = $objSmarty;
-        $this->permissoes = new permissoes();
-
         $this->public_pages = array('login', 'erro');
-
-        /* Loading default CSS and JS */
-        $this->css[] = $this->path_root . '/files/css/style.css';
-        $this->js[] = $this->path_root . '/files/js/jquery-1.9.1.js';
-        $this->js[] = $this->path_root . '/files/js/jquery.mask.js';
-        $this->js[] = $this->path_root . '/files/js/jquery_ui/js/jquery-ui-1.10.3.custom.min.js';
-        $this->css[] = $this->path_root . '/files/js/jquery_ui/css/smoothness/jquery.ui.all.css';
-        $this->js[] = $this->path_root . '/files/js/tiny_mce/tiny_mce.js';
-        $this->js[] = $this->path_root . '/files/js/jquery_shapeshift/jquery.shapeshift.js';
-        $this->js[] = $this->path_root . '/files/js/jquery.easing.1.3.js';
-        $this->js[] = $this->path_root . '/files/js/util.js';
-        $this->js[] = $this->path_root . '/files/js/jquery.ui.touch-punch.min.js';
-        $this->js[] = $this->path_root . '/files/js/jquery.nicescroll.js';
-        $this->js[] = $this->path_root . '/files/js/jquery_menu/fg.menu.js';
-        $this->js[] = $this->path_root . '/files/js/jquery_menu/fg.menu_script.js';
-
-        $this->css[] = $this->path_root . '/files/css/aplicacao.css';
-
-
-        //notify scripts
-        $this->js[] = $this->path_root . '/files/js/noty/jquery.noty.js';
-        $this->js[] = $this->path_root . '/files/js/noty/layouts/bottom.js';
-        $this->js[] = $this->path_root . '/files/js/noty/layouts/bottomCenter.js';
-        $this->js[] = $this->path_root . '/files/js/noty/layouts/bottomLeft.js';
-        $this->js[] = $this->path_root . '/files/js/noty/layouts/bottomRight.js';
-        $this->js[] = $this->path_root . '/files/js/noty/layouts/center.js';
-        $this->js[] = $this->path_root . '/files/js/noty/layouts/inline.js';
-        $this->js[] = $this->path_root . '/files/js/noty/themes/default.js';
-
-
-        if ($this->permissoes->is_logged()) {
-            $this->js[] = $this->path_root . '/files/js/notificacoes.js';
-            $this->js[] = $this->path_root . '/files/js/niceScroll.js';
-            $this->js[] = $this->path_root . '/files/js/toastmessage/javascript/jquery.toastmessage.js';
-            $this->css[] = $this->path_root . '/files/js/toastmessage/resources/css/jquery.toastmessage.css';
-            $this->js[] = $this->path_root . '/files/js/centralizar.js';
-
-            $this->js[] = $this->path_root . '/files/js/colorpicker/js/colorpicker.js';
-            $this->css[] = $this->path_root . '/files/js/colorpicker/css/colorpicker.css';
-
-            $this->js[] = $this->path_root . '/files/js/timepicker/jquery.ui.timepicker.js';
-            $this->css[] = $this->path_root . '/files/js/timepicker/jquery.ui.timepicker.css';
-
-            $this->js[] = $this->path_root . '/files/js/jquery_file_upload/js/jquery.fileupload.js';
-            $this->js[] = $this->path_root . '/files/js/jquery_file_upload/js/jquery.iframe-transport.js';
-            $this->css[] = $this->path_root . '/files/js/jquery_file_upload/css/jquery.fileupload-ui.css';
-        }
+ 
     }
 
     public function setTitle($title = NOME_SITE) {

@@ -23,12 +23,11 @@ class controller extends System {
         $this->smarty = new Smarty;
         $this->smarty->debugging = false;
         $this->smarty->force_compile = true;
-        $this->smarty->caching = false;
-        $this->smarty->template_dir = SMARTYDIR . "/templates/";
-        //$this->smarty->compile_dir = SMARTYDIR."/templates_c/";
-        $this->smarty->compile_dir = "/tmp/";
+        $this->smarty->caching = true;
+        $this->smarty->template_dir = SMARTYDIR;        
+        $this->smarty->compile_dir = ROOT_APP."/tmp/";
         $this->smarty->config_dir = SMARTYDIR . "/configs/";
-        $this->smarty->cache_dir = SMARTYDIR . "/cache/";
+        $this->smarty->cache_dir = ROOT_APP."/tmp/cache/";
         $this->smarty->assign('HTTP_ROOT', HTTP_ROOT);
         $this->template = new template($this->smarty);
     }
