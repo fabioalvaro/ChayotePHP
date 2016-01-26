@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Language" content="pt-br">
 <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-<title>Acesso negado</title>
+<title>Chayote PHP | Solicitação com erro</title>
 </head>
 
 <body>
@@ -11,7 +11,7 @@
 <p align="center">&nbsp;</p>
 <p align="center">&nbsp;</p>
 <p align="center">&nbsp;</p>
-<p align="center"><b><font face="Arial" size="3">Erro 403</font></b></p>
-<p align="center"><font face="MS Sans Serif" size="2">Acesso negado</font></p>
+<p align="center"><b><font face="Arial" size="3">Chayote PHP | Erro</font></b></p>
+<p align="center"><img src="/files/images/chayote-error.png"></p>
 </body>
 </html>

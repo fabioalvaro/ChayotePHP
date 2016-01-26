@@ -6,7 +6,7 @@ class erro extends controller {
         $msg = isset($_SESSION['erro']['msg']) ? $_SESSION['erro']['msg'] : null;
         $this->smarty->assign('title', 'Oops!');
         $this->smarty->assign('msg', $msg);
-        $this->smarty->display('comuns/erro.tpl');
+        $this->smarty->display('erros/index.tpl');
     }
 
 }

@@ -1,30 +1,30 @@
       <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <li class="sidebar-brand">
-                        <a href="#">
-                            Start Bootstrap
+                        <a href="/">
+                            Chayote PHP
                         </a>
                     </li>
                     <li>
-                        <a href="#">Dashboard</a>
+                        <a href="/">Dashboard</a>
                     </li>
                     <li>
                         <a href="/color">Color</a>
                     </li>
                     <li>
-                        <a href="#">Overview</a>
+                        <a href="/bob">Bob Erro test</a>
                     </li>
                     <li>
-                        <a href="#">Events</a>
+                        <a href="#">Link #1</a>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <a href="#">Link #2</a>
                     </li>
                     <li>
-                        <a href="#">Services</a>
+                        <a href="#">Link #3</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="#">Link #4</a>
                     </li>
                 </ul>
             </div>
