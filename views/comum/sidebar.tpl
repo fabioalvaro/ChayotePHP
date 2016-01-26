@@ -15,7 +15,7 @@
                         <a href="/bob">Bob Erro test</a>
                     </li>
                     <li>
-                        <a href="#">Link #1</a>
+                        <a href="/blank">Blank</a>
                     </li>
                     <li>
                         <a href="#">Link #2</a>
