@@ -6,7 +6,7 @@
 how to setup the environment
 
 
-ChayotePHP V2.0
+ChayotePHP 3.0
 ----------------------------
 
 PHP Framework an easy opportunity to start in the Framework World
