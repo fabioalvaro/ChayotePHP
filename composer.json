@@ -1,8 +1,7 @@
-{
-    "version": "2.0.0",
+{    
     "name": "fabioalvaro/chayotephp",
     "type": "library",
-    "description": "Chayote PHP Easy Framework",
+    "description": "Chayote PHP 3.0 Easy Framework",
     "keywords": ["php","framework","easy","fabio","alvaro"],
     "homepage": "https://github.com/fabioalvaro/chayotephp",
     "license": "MIT",
