@@ -4,7 +4,7 @@
 how to setup the environment
 
 
-ChayotePHP
+ChayotePHP V2.0
 ----------------------------
 
 PHP Framework an easy opportunity to start in the Framework World
