@@ -47,7 +47,12 @@ PHP Framework an easy opportunity to start in the Framework World
     
     $ git clone https://github.com/fabioalvaro/ChayotePHP.git teste1
 
-    
+ou utlize o composer
+
+    $ composer create-project --prefer-dist fabioalvaro/chayotephp teste1
+    $ cd teste1
+    $ composer update
+
     
     
 7)set the permissions:
