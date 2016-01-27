@@ -3,9 +3,6 @@
 
 # README #
 
-
-
-
 how to setup the environment
 
 
@@ -53,7 +50,7 @@ PHP Framework an easy opportunity to start in the Framework World
     
     
     
-7)Dê permissao para a pasta:
+7)set the permissions:
     
     $ sudo chmod 777 teste1/ -R
 
