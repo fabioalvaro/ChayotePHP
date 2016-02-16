@@ -25,13 +25,22 @@ PHP Framework an easy opportunity to start in the Framework World
       CustomLog "/var/log/httpd/localhost.chayotephp-access_log" common    
     </VirtualHost>
   
-  4)Configure o .htaccess da raiz do projeto
+  4)Configure o .htaccess da raiz do projeto com o seguinte conteudo
 
+    DirectoryIndex index.php
     <IfModule mod_rewrite.c>
+        Options +FollowSymLinks
         RewriteEngine on
-        RewriteRule    ^$    public/    [L]
-        RewriteRule    (.*) public/$1    [L]
+        RewriteCond %{REQUEST_METHOD} ^TRAC[EK]
+        RewriteRule .* - [L,R=405]
+        RewriteCond %{REQUEST_URI} !^/(files)/
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-l
+        RewriteRule ^(.*)$ index.php?url=$1
     </IfModule>
+    AddDefaultCharset UTF-8
+    Options -Indexes
     
     
     
