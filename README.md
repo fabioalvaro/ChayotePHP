@@ -64,10 +64,11 @@ Verifique se seu arquivo /etc/httpd/httpd.conf esta com o redirect ativado e as 
         Allow from all      
     </Directory>    
     
-Verifique tambem se esta habilitada a extensão do re-write
+Verifique tambem se esta habilitada a extensão do re-write do servidor apache
     
     LoadModule rewrite_module lib64/httpd/modules/mod_rewrite.so
 
+Reinicie o servidor apache para ter certeza que todas as configurações foram carregadas
     
     $ sudo /etc/rc.d/rc.httpd stop                                                                                                                            
     $sudo /etc/rc.d/rc.httpd start  
@@ -77,8 +78,9 @@ Verifique tambem se esta habilitada a extensão do re-write
 6)Faça Checkout do Projeto no git
     
     $ cd var/www/htdocs
-    
     $ git clone https://github.com/fabioalvaro/ChayotePHP.git teste1
+    $ cd teste1
+    $ composer update
 
 ou utlize o composer
 
@@ -88,8 +90,8 @@ ou utlize o composer
 
     
     
-7)set the permissions:
-    
+7)Set the permissions:
+    $ cd var/www/htdocs
     $ sudo chmod 777 teste1/ -R
 
     
