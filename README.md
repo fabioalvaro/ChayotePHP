@@ -12,8 +12,11 @@ ChayotePHP 3.0
 PHP Framework an easy opportunity to start in the Framework World
 
 
-1)
-    127.0.0.8 		localhost.chayotephp
+1) Edit the file /etc/hosts and add an entry as below:
+
+    127.0.0.8 		localhost.teste1
+    
+    We will use an alias "teste1" for example purpose only in this tutorial.
 
 2)Add the entry on vhost
 
@@ -99,12 +102,12 @@ or using Composer
     $ sudo chmod 777 teste1/ -R
 
     
-9)Instale o banco de dados exemplo para voce poder utilizar o banco de dados, use seu gerenciador padrão de MYSQL.
+9)Install the e.g database to use the default entity color to tutorial purpose only. You can use the default mysql manager tha you are confortable to use. 
     
         chayotedb.sql
         
         
-10)Configure as diretivas de conexão no arquivo config.php (linha 27 +- )
+10)Setup the credentials to access the connection on config.php file (linha 27 +- )
     
     define('DBHOST', 'localhost');
     
@@ -118,7 +121,7 @@ or using Composer
     
     define('DBENCODING', 'utf8');
         
-        
+11)Now try to access your default url eg: http://localhost.teste1        
         
     
     
