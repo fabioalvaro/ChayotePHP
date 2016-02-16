@@ -34,7 +34,26 @@ PHP Framework an easy opportunity to start in the Framework World
     </IfModule>
     
     
+    
+    
 5) Reinicie o servidor Apache
+Verifique se seu arquivo /etc/httpd/httpd.conf esta com o redirect ativado:
+
+    <Directory />
+        #AllowOverride none
+        #Require all denied
+        Options FollowSymLinks
+        AllowOverride All  
+    </Directory>
+    
+    DocumentRoot "/srv/httpd/htdocs"
+    <Directory "/srv/httpd/htdocs">
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride All
+        Order Allow,Deny
+        Allow from all      
+    </Directory>    
+
     
     $ sudo /etc/rc.d/rc.httpd stop                                                                                                                            
     $sudo /etc/rc.d/rc.httpd start  
