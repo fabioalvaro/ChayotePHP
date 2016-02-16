@@ -37,7 +37,8 @@ PHP Framework an easy opportunity to start in the Framework World
     
     
 5) Reinicie o servidor Apache
-Verifique se seu arquivo /etc/httpd/httpd.conf esta com o redirect ativado:
+
+Verifique se seu arquivo /etc/httpd/httpd.conf esta com o redirect ativado e as permissoes de diretorio configuradas
 
     <Directory />
         #AllowOverride none
@@ -53,6 +54,10 @@ Verifique se seu arquivo /etc/httpd/httpd.conf esta com o redirect ativado:
         Order Allow,Deny
         Allow from all      
     </Directory>    
+    
+Verifique tambem se esta habilitada a extensão do re-write
+    
+    LoadModule rewrite_module lib64/httpd/modules/mod_rewrite.so
 
     
     $ sudo /etc/rc.d/rc.httpd stop                                                                                                                            
