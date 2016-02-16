@@ -25,7 +25,7 @@ PHP Framework an easy opportunity to start in the Framework World
       CustomLog "/var/log/httpd/localhost.chayotephp-access_log" common    
     </VirtualHost>
   
-  4)Configure o .htaccess da raiz do projeto com o seguinte conteudo
+  3)Configure o .htaccess da raiz do projeto com o seguinte conteudo
 
     DirectoryIndex index.php
     <IfModule mod_rewrite.c>
@@ -45,7 +45,7 @@ PHP Framework an easy opportunity to start in the Framework World
     
     
     
-5) Reinicie o servidor Apache
+4) Reinicie o servidor Apache
 
 Verifique se seu arquivo /etc/httpd/httpd.conf esta com o redirect ativado e as permissoes de diretorio configuradas
 
@@ -64,18 +64,18 @@ Verifique se seu arquivo /etc/httpd/httpd.conf esta com o redirect ativado e as 
         Allow from all      
     </Directory>    
     
-Verifique tambem se esta habilitada a extensão do re-write do servidor apache
+5) Verifique tambem no seu arquivo /etc/httpd/httpd.conf se esta habilitada a extensão do re-write do servidor apache
     
     LoadModule rewrite_module lib64/httpd/modules/mod_rewrite.so
 
-Reinicie o servidor apache para ter certeza que todas as configurações foram carregadas
+6)Reinicie o servidor apache para ter certeza que todas as configurações foram carregadas
     
     $ sudo /etc/rc.d/rc.httpd stop                                                                                                                            
     $sudo /etc/rc.d/rc.httpd start  
     
     
     
-6)Faça Checkout do Projeto no git
+7)Faça Checkout do Projeto no git
     
     $ cd var/www/htdocs
     $ git clone https://github.com/fabioalvaro/ChayotePHP.git teste1
@@ -90,19 +90,19 @@ ou utlize o composer
 
     
     
-7)Set the permissions:
+8)Set the permissions:
 
     $ cd var/www/htdocs
     
     $ sudo chmod 777 teste1/ -R
 
     
-8)Instale o banco de dados exemplo para voce poder utilizar o banco de dados, use seu gerenciador padrão de MYSQL.
+9)Instale o banco de dados exemplo para voce poder utilizar o banco de dados, use seu gerenciador padrão de MYSQL.
     
         chayotedb.sql
         
         
-9)Configure as diretivas de conexão no arquivo config.php (linha 27 +- )
+10)Configure as diretivas de conexão no arquivo config.php (linha 27 +- )
     
     define('DBHOST', 'localhost');
     
