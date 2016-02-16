@@ -91,7 +91,9 @@ ou utlize o composer
     
     
 7)Set the permissions:
+
     $ cd var/www/htdocs
+    
     $ sudo chmod 777 teste1/ -R
 
     
