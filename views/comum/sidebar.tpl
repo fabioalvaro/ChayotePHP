@@ -12,6 +12,9 @@
                         <a href="/color">Color</a>
                     </li>
                     <li>
+                        <a href="/fruit">Fruit - using Datatables</a>
+                    </li>                    
+                    <li>
                         <a href="/bob">Bob Erro test</a>
                     </li>
                     <li>
